@@ -8,7 +8,7 @@ export const projects = [
     status: 'In Progress',
     description: 'Industrial Manufacturing Facility. Contractor: Scon Projects. Consultant: United Architects.',
     progress: 75,
-    image: '/images/projects/project-1.jpg',
+    image: '/images/projects/ongoing-placeholder.jpg',
   },
   {
     name: 'International Residential School',
@@ -18,7 +18,7 @@ export const projects = [
     status: 'In Progress',
     description: 'International Residential School. Contractor: CCPL. Consultant: Ace Architects / Maple.',
     progress: 60,
-    image: '/images/projects/project-3.jpg',
+    image: '/images/projects/ongoing-placeholder.jpg',
   },
   {
     name: 'Luxurious Villa Project',
@@ -28,7 +28,7 @@ export const projects = [
     status: 'In Progress',
     description: 'Luxurious Villa Project. Contractor: CCPL.',
     progress: 45,
-    image: '/images/projects/project-4.jpg',
+    image: '/images/projects/ongoing-placeholder.jpg',
   },
   {
     name: 'Industrial Manufacturing Facility',
@@ -38,7 +38,7 @@ export const projects = [
     status: 'In Progress',
     description: 'Industrial Manufacturing Facility. Contractor: CCPL. Consultant: CRN.',
     progress: 70,
-    image: '/images/projects/project-5.jpg',
+    image: '/images/projects/ongoing-placeholder.jpg',
   },
   {
     name: 'Industrial Manufacturing Facility',
@@ -48,7 +48,7 @@ export const projects = [
     status: 'In Progress',
     description: 'Industrial Manufacturing Facility. Contractor: CCPL.',
     progress: 85,
-    image: '/images/projects/project-1.jpg',
+    image: '/images/projects/ongoing-placeholder.jpg',
   },
   
   // --- COMPLETED PROJECTS ---
@@ -60,7 +60,7 @@ export const projects = [
     status: 'Completed',
     description: 'Cold Storage & Office Area. Contractor: SPC. Consultant: Vestian Global / Aditi.',
     progress: 100,
-    image: '/images/projects/project-3.jpg',
+    image: '/images/projects/comp-1.png',
   },
   {
     name: 'Office Space - A & D',
@@ -70,7 +70,7 @@ export const projects = [
     status: 'Completed',
     description: 'Office Space - A & D. Contractor: CCPL.',
     progress: 100,
-    image: '/images/projects/project-4.jpg',
+    image: '/images/projects/comp-2.png',
   },
   {
     name: 'Office Space - Savance',
@@ -80,7 +80,7 @@ export const projects = [
     status: 'Completed',
     description: 'Office Space - Savance. Contractor: CCPL.',
     progress: 100,
-    image: '/images/projects/project-5.jpg',
+    image: '/images/projects/comp-3.png',
   },
   {
     name: 'Warehousing',
@@ -90,7 +90,7 @@ export const projects = [
     status: 'Completed',
     description: 'Warehousing. Contractor: SPC. Consultant: Turner & Townsend.',
     progress: 100,
-    image: '/images/projects/project-1.jpg',
+    image: '/images/projects/comp-4.png',
   },
   {
     name: 'Manufacturing Facility',
@@ -100,7 +100,7 @@ export const projects = [
     status: 'Completed',
     description: 'Manufacturing Facility.',
     progress: 100,
-    image: '/images/projects/project-3.jpg',
+    image: '/images/projects/comp-5.png',
   },
   {
     name: 'Manufacturing Facility - Electronic Component',
@@ -110,7 +110,7 @@ export const projects = [
     status: 'Completed',
     description: 'Manufacturing Facility - Electronic Component.',
     progress: 100,
-    image: '/images/projects/project-4.jpg',
+    image: '/images/projects/comp-6.png',
   },
   {
     name: 'Commercial Space',
@@ -120,6 +120,6 @@ export const projects = [
     status: 'Completed',
     description: 'Commercial Space.',
     progress: 100,
-    image: '/images/projects/project-5.jpg',
+    image: '/images/projects/comp-7.png',
   }
 ]
