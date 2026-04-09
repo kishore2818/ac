@@ -6,7 +6,7 @@ import ScrollReveal, { staggerContainer, fadeUp } from '../shared/ScrollReveal'
 
 const certs = [
   { name: 'ISO 9001:2015', org: 'TUV SUD', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' },
-  { name: 'CPRI  Approved', org: 'Govt. of India', icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' },
+  { name: 'CPRI Approved', org: 'Govt. of India', icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' },
   { name: 'Class A Contractor', org: 'Electrical Inspectorate', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
   { name: 'CE Marked', org: 'European Standards', icon: 'M12 8c-1.6 0-3 1.4-3 3s1.4 3 3 3 3-1.4 3-3-1.4-3-3-3z M12 22v-6' }
 ]
