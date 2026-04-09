@@ -7,20 +7,24 @@ import SectionLabel from '../shared/SectionLabel'
 import ScrollReveal, { staggerContainer, fadeUp } from '../shared/ScrollReveal'
 import { services } from '@/data/services'
 
-export default function Services() {
+export default function Services({ showAll = false }: { showAll?: boolean }) {
+  const displayedServices = showAll ? services : services.slice(0, 3)
+
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section className={`py-24 md:py-32 ${showAll ? 'bg-[var(--gray-bg)] border-b border-[var(--border)]' : 'bg-white'}`}>
       <div className="w-full mx-auto px-8">
         
         <div className="text-center flex flex-col items-center mb-16">
           <SectionLabel text="Our Expertise" color="accent" />
-          <h2 className="font-bebas text-5xl md:text-6xl uppercase text-[var(--accent)]">Core <span className="text-[var(--primary)]">Services</span></h2>
+          <h2 className="font-bebas text-5xl md:text-6xl uppercase text-[var(--accent)]">
+            {showAll ? 'Engineering' : 'Core'} <span className="text-[var(--primary)]">Services</span>
+          </h2>
           <p className="font-inter text-[var(--gray)] max-w-2xl mt-4">We deliver comprehensive electrical solutions tailored to industrial, commercial, and infrastructure applications.</p>
         </div>
 
         <ScrollReveal animation={staggerContainer}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 3).map((service, i) => {
+            {displayedServices.map((service, i) => {
               // Dynamically get the icon component
               const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
 
@@ -64,17 +68,19 @@ export default function Services() {
           </div>
         </ScrollReveal>
 
-        <div className="text-center mt-16 md:mt-20">
-          <Link href="/services">
-            <motion.button 
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-12 py-4 bg-[var(--primary)] text-white font-rajdhani font-bold tracking-[0.2em] uppercase rounded-sm shadow-xl hover:shadow-2xl transition-all"
-            >
-              View All Services
-            </motion.button>
-          </Link>
-        </div>
+        {!showAll && (
+          <div className="text-center mt-16 md:mt-20">
+            <Link href="/services">
+              <motion.button 
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-12 py-4 bg-[var(--primary)] text-white font-rajdhani font-bold tracking-[0.2em] uppercase rounded-sm shadow-xl hover:shadow-2xl transition-all"
+              >
+                View All Services
+              </motion.button>
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>
