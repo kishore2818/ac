@@ -93,28 +93,58 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: '100vh' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="absolute top-[72px] left-0 w-full bg-white/98 backdrop-blur-xl border-t border-[var(--border)] shadow-xl"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-white z-[2000] lg:hidden flex flex-col"
           >
-            <div className="p-8 flex flex-col gap-6">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link 
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`font-inter text-xl tracking-widest uppercase transition-colors ${pathname === link.href ? 'text-[var(--primary)] font-bold' : 'text-[var(--black)]'} hover:text-[var(--primary)]`}
+            {/* Mobile Menu Header */}
+            <div className="h-[72px] px-4 flex items-center justify-between border-b border-[var(--border)]">
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                <img src="/logo.png" alt="Adler Contracts" className="h-10 w-auto" />
+              </Link>
+              <button onClick={() => setMenuOpen(false)} className="p-2">
+                <div className="w-6 h-0.5 bg-[var(--black)] rotate-45 translate-y-0.5" />
+                <div className="w-6 h-0.5 bg-[var(--black)] -rotate-45 -translate-y-0.5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-8 flex flex-col">
+              <nav className="flex flex-col gap-6 mb-12">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link 
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={`block font-bebas text-4xl tracking-wider transition-colors ${pathname === link.href ? 'text-[var(--primary)]' : 'text-[var(--accent)]'}`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+
+              <div className="mt-auto space-y-6 pt-8 border-t border-[var(--border)]">
+                <div>
+                  <h4 className="font-rajdhani text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)] mb-2">Connect</h4>
+                  <div className="space-y-1 font-inter text-[var(--gray)]">
+                    <p className="text-sm">+91 90350 27395</p>
+                    <p className="text-sm">Priya@adlercontracts.com</p>
+                  </div>
+                </div>
+                
+                <Link href="/contact" onClick={() => setMenuOpen(false)} className="block">
+                  <button className="w-full bg-[var(--black)] text-white font-rajdhani font-bold uppercase tracking-widest py-4 rounded-sm">
+                    Request a Quote
+                  </button>
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

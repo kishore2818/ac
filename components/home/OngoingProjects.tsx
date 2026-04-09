@@ -10,10 +10,10 @@ export default function OngoingProjects() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   return (
-    <section className="bg-white py-24 md:py-32">
-      <div className="w-full mx-auto px-8 mb-16 text-center flex flex-col items-center">
+    <section className="bg-white py-20 md:py-32">
+      <div className="w-full mx-auto px-6 md:px-12 mb-10 md:mb-16 text-center flex flex-col items-center">
         <SectionLabel text="What We Are Building" color="accent" />
-        <h2 className="font-bebas text-5xl md:text-6xl text-[var(--accent)] tracking-wider">
+        <h2 className="font-bebas text-4xl md:text-6xl text-[var(--accent)] tracking-wider">
           Ongoing <span className="text-[var(--primary)]">Projects</span>
         </h2>
       </div>

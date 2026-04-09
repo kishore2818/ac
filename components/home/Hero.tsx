@@ -177,9 +177,9 @@ export default function Hero() {
         <span className="font-bebas text-[var(--primary)] tracking-[6px] opacity-80">SINCE 2014</span>
       </div>
 
-      <div className="w-full mx-auto px-8 h-full relative z-20 flex flex-col justify-center items-center pt-24 pb-12">
+      <div className="w-full mx-auto px-6 md:px-12 h-full relative z-20 flex flex-col justify-center items-center pt-24 pb-12">
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 w-full w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 w-full">
 
           {/* Main Content - Left aligned on desktop */}
           <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -188,15 +188,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-8 shadow-sm lg:self-start"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-6 md:mb-8 shadow-sm lg:self-start"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
-              <span className="font-rajdhani text-white text-xs uppercase tracking-widest font-bold">
+              <span className="font-rajdhani text-white text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
                 ISO Certified Electrical Specialists
               </span>
             </motion.div>
 
-            <h1 className="font-bebas text-[clamp(36px,10vw,88px)] text-white leading-[0.95] tracking-tight mb-8 flex flex-wrap justify-center lg:justify-start gap-x-4 drop-shadow-xl w-full">
+            <h1 className="font-bebas text-[clamp(42px,10vw,88px)] text-white leading-[0.9] tracking-tight mb-8 flex flex-wrap justify-center lg:justify-start gap-x-3 md:gap-x-4 drop-shadow-xl w-full">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -214,7 +214,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="font-inter text-gray-100 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed font-medium drop-shadow-md mx-auto lg:mx-0"
+              className="font-inter text-gray-100 text-base md:text-xl max-w-2xl mb-10 leading-relaxed font-normal md:font-medium drop-shadow-md mx-auto lg:mx-0"
             >
               A Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions. Committed to deliver from design to planning and installation.
             </motion.p>
@@ -223,20 +223,20 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
-              className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 w-full px-4 sm:px-0"
+              className="grid grid-cols-1 sm:flex sm:flex-row flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 w-full max-w-md sm:max-w-none"
             >
-              <Link href="/services" className="w-full sm:w-auto">
+              <Link href="/services">
                 <motion.button
                   whileHover={{ y: -3, boxShadow: '0 10px 25px rgba(124,179,66,0.3)' }}
-                  className="shimmer-btn bg-[var(--primary)] text-white font-rajdhani uppercase tracking-widest font-bold px-8 sm:px-10 py-3 sm:py-4 rounded-sm shadow-lg w-full sm:min-w-[200px]"
+                  className="shimmer-btn bg-[var(--primary)] text-white font-rajdhani uppercase tracking-widest font-bold px-8 sm:px-10 py-4 rounded-sm shadow-lg w-full sm:min-w-[200px]"
                 >
                   Explore Expertise
                 </motion.button>
               </Link>
-              <Link href="/projects" className="w-full sm:w-auto">
+              <Link href="/projects">
                 <motion.button
                   whileHover={{ y: -3, backgroundColor: 'rgba(255,255,255,0.1)' }}
-                  className="border-2 border-white text-white bg-black/20 backdrop-blur font-rajdhani uppercase tracking-widest font-bold px-8 sm:px-10 py-3 sm:py-4 rounded-sm hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors w-full sm:min-w-[200px]"
+                  className="border-2 border-white text-white bg-black/20 backdrop-blur font-rajdhani uppercase tracking-widest font-bold px-8 sm:px-10 py-4 rounded-sm hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors w-full sm:min-w-[200px]"
                 >
                   Our Projects
                 </motion.button>

@@ -31,17 +31,17 @@ const differentiators = [
 
 export default function CoreValues() {
   return (
-    <section className="py-24 bg-white">
-      <div className="w-full mx-auto px-8">
+    <section className="py-20 md:py-24 bg-white">
+      <div className="w-full mx-auto px-6 md:px-12">
         
-        <div className="text-center mb-16">
-          <h2 className="font-bebas text-5xl text-[var(--accent)] mb-4">Our Core Values</h2>
-          <p className="font-inter text-[var(--black-muted)] max-w-2xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-bebas text-4xl md:text-5xl text-[var(--accent)] mb-4">Our Core Values</h2>
+          <p className="font-inter text-[var(--black-muted)] max-w-2xl mx-auto text-sm md:text-base">
             At Adler, these values are not just guiding principles - they are embedded in every brick we lay and every structure we deliver.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24">
           {values.map((v, i) => (
             <motion.div 
               key={v.title}
@@ -49,7 +49,7 @@ export default function CoreValues() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 border border-[var(--border)] rounded-sm text-center hover:shadow-lg transition-all"
+              className="p-6 md:p-8 border border-[var(--border)] rounded-sm text-center hover:shadow-lg transition-all"
             >
               <div className="inline-flex p-4 bg-[var(--primary-soft)] text-[var(--primary)] rounded-full mb-6 text-2xl">
                 <v.icon size={32} />
@@ -60,12 +60,12 @@ export default function CoreValues() {
           ))}
         </div>
 
-        <div className="bg-[var(--black)] p-12 md:p-16 rounded-sm text-white relative overflow-hidden">
+        <div className="bg-[var(--black)] p-8 md:p-16 rounded-sm text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)]/10 blur-[80px] -mr-32 -mt-32" />
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="font-bebas text-5xl mb-6">What sets <span className="text-[var(--primary)]">Adler</span> apart?</h2>
-              <p className="font-inter text-gray-400 mb-8 max-w-lg">
+              <h2 className="font-bebas text-3xl md:text-5xl mb-6">What sets <span className="text-[var(--primary)]">Adler</span> apart?</h2>
+              <p className="font-inter text-gray-400 mb-8 max-w-lg text-sm md:text-base">
                 Our core differentiators define our approach to electrical contracting and are the reason our clients trust us with their most critical infrastructure.
               </p>
             </div>

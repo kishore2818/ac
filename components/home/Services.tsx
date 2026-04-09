@@ -11,15 +11,15 @@ export default function Services({ showAll = false }: { showAll?: boolean }) {
   const displayedServices = showAll ? services : services.slice(0, 3)
 
   return (
-    <section className={`py-24 md:py-32 ${showAll ? 'bg-[var(--gray-bg)] border-b border-[var(--border)]' : 'bg-white'}`}>
-      <div className="w-full mx-auto px-8">
+    <section className={`py-20 md:py-32 ${showAll ? 'bg-[var(--gray-bg)] border-b border-[var(--border)]' : 'bg-white'}`}>
+      <div className="w-full mx-auto px-6 md:px-12">
         
-        <div className="text-center flex flex-col items-center mb-16">
+        <div className="text-center flex flex-col items-center mb-12 md:mb-16">
           <SectionLabel text="Our Expertise" color="accent" />
-          <h2 className="font-bebas text-5xl md:text-6xl uppercase text-[var(--accent)]">
+          <h2 className="font-bebas text-4xl md:text-6xl uppercase text-[var(--accent)]">
             {showAll ? 'Engineering' : 'Core'} <span className="text-[var(--primary)]">Services</span>
           </h2>
-          <p className="font-inter text-[var(--gray)] max-w-2xl mt-4">We deliver comprehensive electrical solutions tailored to industrial, commercial, and infrastructure applications.</p>
+          <p className="font-inter text-[var(--gray)] max-w-2xl mt-4 text-sm md:text-base">We deliver comprehensive electrical solutions tailored to industrial, commercial, and infrastructure applications.</p>
         </div>
 
         <ScrollReveal animation={staggerContainer}>

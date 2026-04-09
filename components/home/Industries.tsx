@@ -16,14 +16,14 @@ const industries = [
 
 export default function Industries() {
   return (
-    <section className="bg-[var(--gray-bg)] py-24 md:py-32 border-y border-[var(--border)]">
-      <div className="w-full mx-auto px-8">
+    <section className="bg-[var(--gray-bg)] py-20 md:py-32 border-y border-[var(--border)]">
+      <div className="w-full mx-auto px-6 md:px-12">
         
-        <div className="text-center flex flex-col items-center mb-16">
+        <div className="text-center flex flex-col items-center mb-12 md:mb-16">
           <SectionLabel text="Industries We Serve" color="accent" />
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <Zap className="w-10 h-10 text-[var(--primary)] animate-pulse mb-2 md:mb-0" />
-            <h2 className="font-bebas text-5xl md:text-6xl uppercase text-[var(--accent)] tracking-wider">
+            <h2 className="font-bebas text-4xl md:text-6xl uppercase text-[var(--accent)] tracking-wider">
               Powering <span className="text-[var(--primary)]">Every Sector</span>
             </h2>
           </div>

@@ -7,12 +7,12 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#111827] border-t-2 border-[var(--primary)] pt-16">
+    <footer className="bg-[#111827] border-t-2 border-[var(--primary)] pt-16 md:pt-20">
       
       {/* Newsletter Strip (above sub-footer) */}
-      <div className="w-full mx-auto px-8 mb-16">
-        <div className="bg-[var(--primary)] rounded-sm p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
+      <div className="w-full mx-auto px-6 md:px-12 mb-16">
+        <div className="bg-[var(--primary)] rounded-sm p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-center md:text-left">
             <h3 className="font-bebas text-3xl tracking-wide text-white mb-1">STAY UPDATED</h3>
             <p className="font-inter text-blue-100 text-sm">Subscribe to our newsletter for industry updates and technical guides.</p>
           </div>
@@ -20,16 +20,16 @@ export default function Footer() {
             <input 
               type="email" 
               placeholder="Enter your email" 
-              className="bg-white/10 border border-white/20 text-white placeholder-white/60 font-inter px-4 py-2 outline-none focus:border-white w-full md:w-64 rounded-l-sm"
+              className="bg-white/10 border border-white/20 text-white placeholder-white/60 font-inter px-4 py-2 outline-none focus:border-white w-full md:w-64 rounded-l-sm text-sm"
             />
-            <button className="bg-white text-[var(--primary)] font-bold font-rajdhani tracking-widest uppercase px-6 py-2 rounded-r-sm hover:bg-gray-100 transition-colors">
-              Subscribe
+            <button className="bg-white text-[var(--primary)] font-bold font-rajdhani tracking-widest uppercase px-6 py-2 rounded-r-sm hover:bg-gray-100 transition-colors text-sm">
+              Join
             </button>
           </div>
         </div>
       </div>
 
-      <div className="w-full mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16">
+      <div className="w-full mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-8 pb-16">
         {/* Brand */}
         <div className="lg:col-span-1">
           <Link href="/" className="flex items-center gap-3 mb-4">

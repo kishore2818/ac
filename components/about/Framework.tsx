@@ -37,12 +37,12 @@ const trainingItems = [
 
 export default function Framework() {
   return (
-    <section className="py-24 bg-[var(--gray-bg)]">
-      <div className="w-full mx-auto px-8">
+    <section className="py-20 md:py-24 bg-[var(--gray-bg)]">
+      <div className="w-full mx-auto px-6 md:px-12">
         
-        <div className="text-center mb-16">
-          <h2 className="font-bebas text-5xl text-[var(--accent)] mb-4 uppercase">Quality & Safety <span className="text-[var(--primary)] text-5xl">First</span></h2>
-          <p className="font-inter text-[var(--gray)] max-w-2xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-bebas text-4xl md:text-5xl text-[var(--accent)] mb-4 uppercase">Quality & Safety <span className="text-[var(--primary)]">First</span></h2>
+          <p className="font-inter text-[var(--gray)] max-w-2xl mx-auto text-sm md:text-base">
             We lead with Quality and build with Safety. Investing in our people ensures long-term reliability.
           </p>
         </div>

@@ -16,11 +16,11 @@ export default function Products() {
   const duplicatedProducts = [...products, ...products]
 
   return (
-    <section className="bg-[var(--gray-bg)] py-24 md:py-32 border-y border-[var(--border)] relative overflow-hidden">
+    <section className="bg-[var(--gray-bg)] py-20 md:py-32 border-y border-[var(--border)] relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--primary)]/5 blur-[100px] pointer-events-none" />
       
-      <div className="w-full mx-auto px-8 mb-16 text-center flex flex-col items-center relative z-10">
+      <div className="w-full mx-auto px-6 md:px-12 mb-12 md:mb-16 text-center flex flex-col items-center relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 10 }}
            whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="font-bebas text-5xl md:text-7xl text-[var(--accent)] tracking-wider mt-4"
+          className="font-bebas text-4xl md:text-7xl text-[var(--accent)] tracking-wider mt-4"
         >
           High Performance <span className="text-[var(--primary)]">Panels</span>
         </motion.h2>
