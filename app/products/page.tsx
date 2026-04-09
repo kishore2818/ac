@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import PageHero from '@/components/shared/PageHero'
 import Link from 'next/link'
+import Image from 'next/image'
 import { products } from '@/data/products'
 
 export default function ProductsPage() {
@@ -17,15 +18,17 @@ export default function ProductsPage() {
         <section className="bg-[var(--gray-bg)] py-24">
           <div className="w-full mx-auto px-8">
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products.map((product, i) => (
+                {products.map((product) => (
                   <div key={product.slug} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden group hover:border-[var(--primary)] transition-colors">
                     <div className="h-48 overflow-hidden bg-[var(--black)] relative border-b border-[var(--primary)]/10">
-                       <img 
-                         src={`/images/products/product-${(i % 8) + 1}.svg`} 
-                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                       <Image 
+                         src={product.image}
+                         fill
+                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                          alt={product.name}
+                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                        />
-                       <span className="absolute top-2 right-2 bg-[var(--primary)] text-white text-[10px] font-rajdhani font-bold uppercase tracking-widest px-2 py-1">
+                       <span className="absolute top-2 right-2 bg-[var(--primary)] text-white text-[10px] font-rajdhani font-bold uppercase tracking-widest px-2 py-1 z-10">
                          {product.category}
                        </span>
                     </div>

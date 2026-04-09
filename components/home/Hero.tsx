@@ -31,7 +31,7 @@ function AutoHighlightingStats() {
   }, []);
 
   return (
-    <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-4 relative z-30 my-8 lg:my-0 lg:ml-8">
+    <div className="w-full lg:w-[320px] shrink-0 hidden lg:flex flex-col gap-4 relative z-30 lg:my-0 lg:ml-8">
       {statsData.map((stat, i) => {
         const isActive = activeIndex === i;
         
@@ -149,7 +149,7 @@ export default function Hero() {
   const words = "POWERING POSSIBILITIES. DELIVERING END TO END ELECTRICAL SOLUTIONS.".split(" ")
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[var(--gray-bg)]">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[var(--gray-bg)]">
 
       {/* Slideshow Background */}
       <div className="absolute inset-0 z-0">
@@ -177,9 +177,9 @@ export default function Hero() {
         <span className="font-bebas text-[var(--primary)] tracking-[6px] opacity-80">SINCE 2014</span>
       </div>
 
-      <div className="w-full mx-auto px-6 md:px-12 h-full relative z-20 flex flex-col justify-center items-center pt-24 pb-12">
+      <div className="w-full mx-auto px-6 md:px-12 h-full relative z-20 flex flex-col justify-center items-center pt-20 md:pt-24 pb-8 md:pb-12">
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 mt-4 lg:mt-12 w-full">
 
           {/* Main Content - Left aligned on desktop */}
           <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -188,7 +188,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-6 md:mb-8 shadow-sm lg:self-start"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-4 md:mb-8 shadow-sm lg:self-start"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
               <span className="font-rajdhani text-white text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
@@ -196,7 +196,7 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <h1 className="font-bebas text-[clamp(42px,10vw,88px)] text-white leading-[0.9] tracking-tight mb-8 flex flex-wrap justify-center lg:justify-start gap-x-3 md:gap-x-4 drop-shadow-xl w-full">
+            <h1 className="font-bebas text-[clamp(36px,8vw,88px)] text-white leading-[0.9] tracking-tight mb-4 md:mb-8 flex flex-wrap justify-center lg:justify-start gap-x-2 md:gap-x-4 drop-shadow-xl w-full">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -214,7 +214,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="font-inter text-gray-100 text-base md:text-xl max-w-2xl mb-10 leading-relaxed font-normal md:font-medium drop-shadow-md mx-auto lg:mx-0"
+              className="font-inter text-gray-100 text-sm md:text-xl max-w-2xl mb-6 md:mb-10 leading-relaxed font-normal md:font-medium drop-shadow-md mx-auto lg:mx-0"
             >
               A Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions. Committed to deliver from design to planning and installation.
             </motion.p>

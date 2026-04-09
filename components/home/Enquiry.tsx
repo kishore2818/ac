@@ -2,13 +2,9 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import emailjs from '@emailjs/browser'
 import SectionLabel from '../shared/SectionLabel'
 
-// TODO: Replace with real credentials from EmailJS
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
+const RECIPIENT_EMAIL = 'Priya@adlercontracts.com'
 
 export default function Enquiry() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -20,20 +16,35 @@ export default function Enquiry() {
     setStatus('idle')
 
     try {
-      if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
-        const form = e.currentTarget
-        await emailjs.sendForm(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_TEMPLATE_ID,
-          form,
-          EMAILJS_PUBLIC_KEY
-        )
-      } else {
-        // Simulate delay if placeholders are used
-        await new Promise(resolve => setTimeout(resolve, 1500))
-      }
+      const form = e.currentTarget
+      const data = new FormData(form)
+
+      const name     = (data.get('from_name') as string) || ''
+      const company  = (data.get('company')   as string) || ''
+      const email    = (data.get('email')     as string) || ''
+      const phone    = (data.get('phone')     as string) || ''
+      const service  = (data.get('service')   as string) || ''
+      const location = (data.get('location')  as string) || ''
+      const message  = (data.get('message')   as string) || ''
+
+      const subject = `Enquiry from ${name}${company ? ` — ${company}` : ''}`
+      const body = [
+        `Name: ${name}`,
+        `Company: ${company || 'N/A'}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Service Required: ${service}`,
+        `Project Location: ${location || 'N/A'}`,
+        '',
+        'Project Details:',
+        message,
+      ].join('\n')
+
+      const mailtoUrl = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      window.open(mailtoUrl, '_blank')
+
       setStatus('success')
-      e.currentTarget.reset()
+      form.reset()
     } catch (error) {
       console.error(error)
       setStatus('error')
