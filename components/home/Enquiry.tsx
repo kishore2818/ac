@@ -44,10 +44,13 @@ export default function Enquiry() {
 
   return (
     <motion.section 
+      initial={{ x: 150, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
       whileHover={{ 
         boxShadow: "inset 0 0 40px rgba(124, 179, 66, 0.08)"
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className="bg-white py-16 lg:py-24 relative overflow-hidden h-full flex flex-col justify-center border-l lg:border-[var(--border)] group"
     >
       

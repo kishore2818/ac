@@ -19,11 +19,14 @@ export default function FAQ() {
 
   return (
     <motion.section 
+      initial={{ x: -150, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
       whileHover={{ 
         boxShadow: "inset 0 0 40px rgba(124, 179, 66, 0.08)",
         backgroundColor: "#fcfdfe" 
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className="bg-[var(--gray-bg)] py-16 lg:py-24 h-full flex flex-col justify-center relative overflow-hidden group transition-colors"
     >
       <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 relative z-10 transition-transform duration-500 group-hover:scale-[1.01]">
