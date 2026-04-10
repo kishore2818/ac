@@ -25,9 +25,10 @@ export default function AboutSnapshot() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-[1100px] mx-auto">
           
-          <ScrollReveal animation={fadeLeft} className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* Left Column (Text) */}
+          <ScrollReveal animation={fadeLeft} className="flex flex-col items-center lg:items-start text-center lg:text-left mb-10 lg:mb-0 lg:ml-auto lg:pr-4">
             <motion.p 
               initial={{ x: -20, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -65,26 +66,29 @@ export default function AboutSnapshot() {
           </ScrollReveal>
 
           {/* Right Column (Images) */}
-          <ScrollReveal animation={fadeRight} delay={0.2} className="relative">
+          <ScrollReveal animation={fadeRight} delay={0.2} className="relative w-full">
             {/* Background decorative stripe */}
             <div 
               className="absolute -top-12 -right-12 w-3/4 h-[120%] bg-[var(--gray-bg)] z-0"
               style={{ clipPath: 'polygon(20% 0, 100% 0, 80% 100%, 0 100%)' }}
             />
             
-            <div className="relative z-10 w-[75%] mx-auto aspect-[4/5] bg-[var(--black)] p-3 shadow-2xl rounded-sm group overflow-hidden border border-gray-100">
+            <div className="relative z-10 w-[85%] lg:w-[80%] mx-auto lg:mr-auto lg:ml-8 aspect-[4/5] group">
               
-              {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[var(--primary)] z-20 m-4" />
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[var(--primary)] z-20 m-4" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[var(--primary)] z-20 m-4" />
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[var(--primary)] z-20 m-4" />
+              {/* Inner container to clip the image scaling without clipping the badges */}
+              <div className="absolute inset-0 bg-[var(--black)] p-3 shadow-2xl rounded-sm overflow-hidden border border-gray-100">
+                {/* Corner brackets */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[var(--primary)] z-20 m-4 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-[var(--primary)] z-20 m-4 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-[var(--primary)] z-20 m-4 pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[var(--primary)] z-20 m-4 pointer-events-none" />
 
-              <img 
-                src="/images/hero/workers/worker-5.png" 
-                alt="Adler Contracts Engineering Team" 
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" 
-              />
+                <img 
+                  src="/images/hero/workers/worker-5.png" 
+                  alt="Adler Contracts Engineering Team" 
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" 
+                />
+              </div>
               
               {/* Floating Badge 1 */}
               <motion.div 
