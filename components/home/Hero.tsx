@@ -249,16 +249,7 @@ export default function Hero() {
 
         </div>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-30">
-          {IMAGES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`h-2 rounded-sm transition-all border border-[var(--border)] shadow-sm ${currentSlide === i ? 'w-10 bg-[var(--primary)] border-transparent' : 'w-3 bg-white'}`}
-            />
-          ))}
-        </div>
+
 
       </div>
 
