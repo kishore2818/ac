@@ -20,80 +20,78 @@ const statsData = [
   { end: 2, label: "Regional Offices", suffix: "" }
 ];
 
-function AutoHighlightingStats() {
+function StatsCard({ stat, isActive, isMobile, index }: { stat: typeof statsData[0], isActive: boolean, isMobile: boolean, index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: isMobile ? 50 : 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.5 + (index * 0.1), duration: 0.6 }}
+      className={`relative ${isMobile ? 'min-w-[200px] mx-2' : 'w-full'}`}
+    >
+      <motion.div
+        animate={{ 
+          scale: isActive ? 1.05 : 1,
+          backgroundColor: isActive ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.85)',
+          borderColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.2)',
+          boxShadow: isActive ? '0 10px 30px rgba(124,179,66,0.3)' : '0 4px 6px rgba(0,0,0,0.05)',
+          x: !isMobile && isActive ? -10 : 0,
+          y: isMobile && isActive ? -5 : 0
+        }}
+        transition={{ duration: 0.4 }}
+        className="flex items-center justify-between p-3 sm:p-4 rounded-lg backdrop-blur-xl border-l-[4px] sm:border-l-[6px] overflow-hidden"
+        style={{ 
+          borderLeftColor: isActive ? 'var(--primary)' : 'transparent',
+        }}
+      >
+        <div className="flex flex-col relative z-10 w-full">
+          <div className="font-bebas text-3xl sm:text-4xl leading-none text-[var(--primary)]">
+            {stat.end}<span className="text-xl ml-1">{stat.suffix}</span>
+          </div>
+          <div className={`font-rajdhani text-[10px] sm:text-[11px] uppercase tracking-widest font-bold mt-1 ${isActive ? 'text-[var(--black)]' : 'text-[var(--gray)]'}`}>
+            {stat.label}
+          </div>
+        </div>
+        <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex justify-center items-center bg-[var(--primary-soft)] text-[var(--primary)] border border-[var(--primary)]/20 transition-opacity ${isActive ? 'opacity-100' : 'opacity-30'}`}>
+          <span className="text-base sm:text-xl">✦</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+function AutoHighlightingStats({ isMobile }: { isMobile: boolean }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % statsData.length);
-    }, 2500);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
-  return (
-    <div className="w-full lg:w-[320px] shrink-0 flex flex-row lg:flex-col gap-4 relative z-30 lg:my-0 lg:ml-8 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory hide-scrollbar">
-      {statsData.map((stat, i) => {
-        const isActive = activeIndex === i;
-        
-        return (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.4 + (i * 0.15), duration: 0.8, type: "spring" }}
-            className="relative min-w-[240px] lg:min-w-0 snap-center"
-          >
-            <motion.div
-              animate={{ 
-                scale: isActive ? 1.05 : 1,
-                x: isActive ? (window.innerWidth >= 1024 ? -10 : 0) : 0,
-                y: isActive ? (window.innerWidth < 1024 ? -10 : 0) : 0,
-                backgroundColor: isActive ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.85)',
-                borderColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.2)',
-                boxShadow: isActive ? '0 10px 30px rgba(124,179,66,0.3)' : '0 4px 6px rgba(0,0,0,0.05)'
-              }}
-              transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-              className="flex items-center justify-between p-4 rounded-lg backdrop-blur-xl border-l-[6px] lg:border-l-[6px] border-b-[6px] lg:border-b-0 overflow-hidden"
-              style={{ 
-                borderLeftColor: isActive && window.innerWidth >= 1024 ? 'var(--primary)' : 'transparent',
-                borderBottomColor: isActive && window.innerWidth < 1024 ? 'var(--primary)' : 'transparent' 
-              }}
-            >
-              {/* Highlight sweep effect */}
-              {isActive && (
-                <motion.div
-                  initial={{ left: '-100%' }}
-                  animate={{ left: '200%' }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                  className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 z-0 pointer-events-none"
-                />
-              )}
-              
-              <div className="flex flex-col relative z-10 w-full">
-                <motion.div 
-                  animate={{ color: isActive ? 'var(--primary)' : 'var(--accent)' }}
-                  className="font-bebas text-4xl leading-none"
-                >
-                  {stat.end}<span className="text-2xl ml-1">{stat.suffix}</span>
-                </motion.div>
-                <div className={`font-rajdhani text-[11px] uppercase tracking-widest font-bold mt-1 transition-colors duration-300 ${isActive ? 'text-[var(--black)]' : 'text-[var(--gray)]'}`}>
-                  {stat.label}
-                </div>
-              </div>
+  if (isMobile) {
+    // Infinite loop for mobile
+    const duplicatedStats = [...statsData, ...statsData];
+    return (
+      <div className="w-full overflow-hidden py-4 -mx-6 px-6">
+        <motion.div 
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="flex w-max"
+        >
+          {duplicatedStats.map((stat, i) => (
+            <StatsCard key={i} stat={stat} isActive={false} isMobile={true} index={i} />
+          ))}
+        </motion.div>
+      </div>
+    );
+  }
 
-              <motion.div 
-                animate={{ 
-                  scale: isActive ? 1.2 : 0.8,
-                  opacity: isActive ? 1 : 0.2
-                }}
-                className="w-10 h-10 rounded-full flex justify-center items-center bg-[var(--primary-soft)] text-[var(--primary)] border border-[var(--primary)]/20 relative z-10 shrink-0"
-              >
-                <span className="text-xl">✦</span>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        );
-      })}
+  return (
+    <div className="w-[300px] flex flex-col gap-4 relative z-30 ml-8">
+      {statsData.map((stat, i) => (
+        <StatsCard key={i} stat={stat} isActive={activeIndex === i} isMobile={false} index={i} />
+      ))}
     </div>
   )
 }
@@ -102,7 +100,7 @@ function Particles() {
   const [particles, setParticles] = useState<{ id: number, x: number, y: number, size: number, delay: number, duration: number }[]>([])
 
   useEffect(() => {
-    const arr = Array.from({ length: 20 }).map((_, i) => ({
+    const arr = Array.from({ length: 15 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -114,7 +112,7 @@ function Particles() {
   }, [])
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-30">
+    <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-20">
       {particles.map(p => (
         <motion.div
           key={p.id}
@@ -139,21 +137,31 @@ function Particles() {
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
-
+  const [windowWidth, setWindowWidth] = useState(0)
+  
   useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % IMAGES.length)
     }, 5000)
-    return () => clearInterval(timer)
+    
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      clearInterval(timer)
+    }
   }, [])
 
   const { scrollY } = useScroll()
   const scaleX = useSpring(useTransform(scrollY, [0, 1000], [0, 1]), { stiffness: 100, damping: 30 })
 
   const words = "POWERING POSSIBILITIES. DELIVERING END TO END ELECTRICAL SOLUTIONS.".split(" ")
+  const isMobile = windowWidth > 0 && windowWidth < 1024;
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[var(--gray-bg)]">
+    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-[var(--gray-bg)] flex items-center">
 
       {/* Slideshow Background */}
       <div className="absolute inset-0 z-0">
@@ -162,53 +170,49 @@ export default function Hero() {
             key={currentSlide}
             src={IMAGES[currentSlide]}
             alt="Adler Contracts Background"
-            initial={{ opacity: 0, scale: 1.08 }}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full object-cover"
           />
         </AnimatePresence>
-
-        {/* Clear background overlay with subtle dark tint for text readability */}
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="scanline opacity-10" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       <Particles />
 
-      {/* Since 2009 Vertical */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-left z-20 hidden lg:block">
-        <span className="font-bebas text-[var(--primary)] tracking-[6px] opacity-80">SINCE 2014</span>
+      {/* Since 2014 Header - Visible and non-hidden on mobile */}
+      <div className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-20">
+        <div className="w-px h-12 sm:h-20 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent" />
+        <span className="font-bebas text-[var(--primary)] tracking-[4px] sm:tracking-[6px] text-[10px] sm:text-xs opacity-80 vertical-text py-4">SINCE 2014</span>
+        <div className="w-px h-12 sm:h-20 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent" />
       </div>
 
-      <div className="w-full mx-auto px-6 md:px-12 h-full relative z-20 flex flex-col justify-center items-center pt-20 md:pt-24 pb-8 md:pb-12">
+      <div className="w-full mx-auto px-6 sm:px-12 md:px-20 relative z-20 pt-16 md:pt-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 w-full">
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 mt-4 lg:mt-12 w-full">
-
-          {/* Main Content - Left aligned on desktop */}
-          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-
+          {/* Main Content */}
+          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left max-w-4xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-4 md:mb-8 shadow-sm lg:self-start"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-4 sm:mb-6 shadow-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
-              <span className="font-rajdhani text-white text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
-                ISO Certified Electrical Specialists
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
+              <span className="font-rajdhani text-white text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-bold">
+                ISO 9001:2015 Certified Specialists
               </span>
             </motion.div>
 
-            <h1 className="font-bebas text-[clamp(36px,8vw,88px)] text-white leading-[0.9] tracking-tight mb-4 md:mb-8 flex flex-wrap justify-center lg:justify-start gap-x-2 md:gap-x-4 drop-shadow-xl w-full">
+            <h1 className="font-bebas text-[clamp(2.5rem,7vw,5.5rem)] text-white leading-[0.95] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + i * 0.08 }}
-                  className={word.includes('POSSIBILITIES') || word.includes('SOLUTIONS') ? 'text-[var(--primary)]' : ''}
+                  transition={{ delay: 0.1 + i * 0.05 }}
+                  className={`${word.includes('POSSIBILITIES') || word.includes('SOLUTIONS') ? 'text-[var(--primary)]' : ''} inline-block mr-2 sm:mr-4`}
                 >
                   {word}
                 </motion.span>
@@ -218,8 +222,8 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="font-inter text-gray-100 text-sm md:text-xl max-w-2xl mb-6 md:mb-10 leading-relaxed font-normal md:font-medium drop-shadow-md mx-auto lg:mx-0"
+              transition={{ delay: 0.8 }}
+              className="font-inter text-gray-200 text-sm sm:text-lg md:text-xl max-w-2xl mb-6 sm:mb-8 leading-relaxed font-normal opacity-90"
             >
               A Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions. Committed to deliver from design to planning and installation.
             </motion.p>
@@ -227,21 +231,21 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
-              className="grid grid-cols-1 sm:flex sm:flex-row flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 w-full max-w-md sm:max-w-none"
+              transition={{ delay: 1 }}
+              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
-              <Link href="/services">
+              <Link href="/services" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ y: -3, boxShadow: '0 10px 25px rgba(124,179,66,0.3)' }}
-                  className="shimmer-btn bg-[var(--primary)] text-white font-rajdhani uppercase tracking-widest font-bold px-8 sm:px-10 py-4 rounded-sm shadow-lg w-full sm:min-w-[200px]"
+                  className="shimmer-btn bg-[var(--primary)] text-white font-rajdhani uppercase tracking-widest font-bold px-8 py-3.5 rounded-sm shadow-xl w-full text-sm sm:text-base"
                 >
                   Explore Expertise
                 </motion.button>
               </Link>
-              <Link href="/projects">
+              <Link href="/projects" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ y: -3, backgroundColor: 'rgba(255,255,255,0.1)' }}
-                  className="border-2 border-white text-white bg-black/20 backdrop-blur font-rajdhani uppercase tracking-widest font-bold px-8 sm:px-10 py-4 rounded-sm hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors w-full sm:min-w-[200px]"
+                  className="border-2 border-white text-white bg-black/20 backdrop-blur font-rajdhani uppercase tracking-widest font-bold px-8 py-3.5 rounded-sm hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors w-full text-sm sm:text-base"
                 >
                   Our Projects
                 </motion.button>
@@ -249,20 +253,26 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Auto-Highlighting Stats Stream */}
-          <AutoHighlightingStats />
+          {/* Stats Section - Carousel on mobile, Stack on desktop */}
+          <div className="w-full lg:w-auto mt-6 lg:mt-0">
+             <AutoHighlightingStats isMobile={isMobile} />
+          </div>
 
         </div>
-
-
-
       </div>
 
       <motion.div
         style={{ scaleX, transformOrigin: "0%" }}
-        className="absolute bottom-0 left-0 right-0 h-[6px] bg-[var(--primary)] z-30"
+        className="absolute bottom-0 left-0 right-0 h-[4px] bg-[var(--primary)] z-30"
       />
 
+      <style jsx>{`
+        .vertical-text {
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+          transform: rotate(180deg);
+        }
+      `}</style>
     </section>
   )
 }

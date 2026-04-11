@@ -18,7 +18,7 @@ export default function Industries() {
   return (
     <section className="bg-[var(--gray-bg)] py-20 md:py-32 border-y border-[var(--border)]">
       <div className="w-full mx-auto px-6 md:px-12">
-        
+
         <div className="text-center flex flex-col items-center mb-12 md:mb-16">
           <SectionLabel text="Industries We Serve" color="accent" />
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
@@ -38,11 +38,11 @@ export default function Industries() {
               className="group relative bg-white border border-[var(--border)] p-8 overflow-hidden rounded-sm transition-all duration-300"
             >
               {/* Hover Diagonal Overlay */}
-              <div 
+              <div
                 className="absolute top-0 right-0 w-32 h-32 bg-[var(--primary-soft)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
                 style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 0)' }}
               />
-              
+
               <div className="relative z-10 mb-6 text-[var(--accent)] group-hover:text-[var(--primary)] transition-all transform group-hover:scale-110 duration-300">
                 <ind.icon size={48} strokeWidth={1} />
               </div>
