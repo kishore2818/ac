@@ -60,12 +60,14 @@ export default function Testimonials() {
           <div className="flex gap-4 mt-8">
             <button 
               onClick={handlePrev}
+              aria-label="Previous Testimonial"
               className="w-12 h-12 border border-[var(--primary)] bg-white rounded-full flex items-center justify-center text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all shadow-sm"
             >
               ←
             </button>
             <button 
               onClick={handleNext}
+              aria-label="Next Testimonial"
               className="w-12 h-12 border border-[var(--primary)] bg-white rounded-full flex items-center justify-center text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all shadow-sm"
             >
               →

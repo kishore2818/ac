@@ -31,7 +31,7 @@ function AutoHighlightingStats() {
   }, []);
 
   return (
-    <div className="w-full lg:w-[320px] shrink-0 hidden lg:flex flex-col gap-4 relative z-30 lg:my-0 lg:ml-8">
+    <div className="w-full lg:w-[320px] shrink-0 flex flex-row lg:flex-col gap-4 relative z-30 lg:my-0 lg:ml-8 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory hide-scrollbar">
       {statsData.map((stat, i) => {
         const isActive = activeIndex === i;
         
@@ -41,19 +41,23 @@ function AutoHighlightingStats() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.4 + (i * 0.15), duration: 0.8, type: "spring" }}
-            className="relative"
+            className="relative min-w-[240px] lg:min-w-0 snap-center"
           >
             <motion.div
               animate={{ 
                 scale: isActive ? 1.05 : 1,
-                x: isActive ? -10 : 0,
+                x: isActive ? (window.innerWidth >= 1024 ? -10 : 0) : 0,
+                y: isActive ? (window.innerWidth < 1024 ? -10 : 0) : 0,
                 backgroundColor: isActive ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.85)',
                 borderColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.2)',
                 boxShadow: isActive ? '0 10px 30px rgba(124,179,66,0.3)' : '0 4px 6px rgba(0,0,0,0.05)'
               }}
               transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-              className="flex items-center justify-between p-4 rounded-lg backdrop-blur-xl border-l-[6px] overflow-hidden"
-              style={{ borderLeftColor: isActive ? 'var(--primary)' : 'transparent' }}
+              className="flex items-center justify-between p-4 rounded-lg backdrop-blur-xl border-l-[6px] lg:border-l-[6px] border-b-[6px] lg:border-b-0 overflow-hidden"
+              style={{ 
+                borderLeftColor: isActive && window.innerWidth >= 1024 ? 'var(--primary)' : 'transparent',
+                borderBottomColor: isActive && window.innerWidth < 1024 ? 'var(--primary)' : 'transparent' 
+              }}
             >
               {/* Highlight sweep effect */}
               {isActive && (
@@ -65,7 +69,7 @@ function AutoHighlightingStats() {
                 />
               )}
               
-              <div className="flex flex-col relative z-10">
+              <div className="flex flex-col relative z-10 w-full">
                 <motion.div 
                   animate={{ color: isActive ? 'var(--primary)' : 'var(--accent)' }}
                   className="font-bebas text-4xl leading-none"
@@ -82,7 +86,7 @@ function AutoHighlightingStats() {
                   scale: isActive ? 1.2 : 0.8,
                   opacity: isActive ? 1 : 0.2
                 }}
-                className="w-10 h-10 rounded-full flex justify-center items-center bg-[var(--primary-soft)] text-[var(--primary)] border border-[var(--primary)]/20 relative z-10"
+                className="w-10 h-10 rounded-full flex justify-center items-center bg-[var(--primary-soft)] text-[var(--primary)] border border-[var(--primary)]/20 relative z-10 shrink-0"
               >
                 <span className="text-xl">✦</span>
               </motion.div>
@@ -157,6 +161,7 @@ export default function Hero() {
           <motion.img
             key={currentSlide}
             src={IMAGES[currentSlide]}
+            alt="Adler Contracts Background"
             initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}

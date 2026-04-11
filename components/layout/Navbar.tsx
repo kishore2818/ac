@@ -81,7 +81,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="lg:hidden p-2 z-50" onClick={() => setMenuOpen(!menuOpen)}>
+        <button aria-label="Toggle Menu" className="lg:hidden p-2 z-50" onClick={() => setMenuOpen(!menuOpen)}>
           <div className={`w-6 h-0.5 mb-1.5 transition-all bg-[var(--black)] ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
           <div className={`w-6 h-0.5 mb-1.5 transition-all bg-[var(--black)] ${menuOpen ? 'opacity-0' : ''}`} />
           <div className={`w-6 h-0.5 transition-all bg-[var(--black)] ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />

@@ -45,6 +45,7 @@ export default function FAQ() {
               <div key={i} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : i)}
+                  aria-expanded={isOpen}
                   className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-gray-50 transition-colors"
                 >
                   <span className={`font-rajdhani text-lg md:text-xl font-bold tracking-widest uppercase transition-colors ${isOpen ? 'text-[var(--primary)]' : 'text-[var(--black)]'}`}>

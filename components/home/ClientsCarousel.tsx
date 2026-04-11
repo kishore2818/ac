@@ -58,7 +58,7 @@ export default function ClientsCarousel() {
           <motion.div
             animate={{ x: [0, -1920] }}
             transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-            className="flex whitespace-nowrap gap-5 mb-5 items-center"
+            className="flex whitespace-nowrap gap-5 mb-5 items-center w-max"
           >
             {[...row1, ...row1, ...row1].map((client, i) => (
               <ClientChip key={i} client={client} idx={i} />
@@ -70,7 +70,7 @@ export default function ClientsCarousel() {
             initial={{ x: -1920 }}
             animate={{ x: 0 }}
             transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
-            className="flex whitespace-nowrap gap-5 items-center"
+            className="flex whitespace-nowrap gap-5 items-center w-max"
           >
             {[...row2, ...row2, ...row2].map((client, i) => (
               <ClientChip key={i} client={client} idx={i + 1} />

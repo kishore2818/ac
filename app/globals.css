@@ -245,3 +245,12 @@ body {
   border-color: var(--primary) !important;
   box-shadow: 0 0 0 3px rgba(124, 179, 66, 0.15);
 }
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
