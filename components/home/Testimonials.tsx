@@ -10,21 +10,21 @@ const testimonials = [
     name: "Operations Head",
     company: "SATS Food Solutions India Pvt Ltd",
     role: "Facility Operations",
-    image: "/images/products/product-1.jpg",
+    image: "/images/products/plc-control-panels.webp",
   },
   {
     quote: "The precision and quality of Adler's electrical work at our aerospace manufacturing unit met the most stringent international standards. A truly reliable partner for critical infrastructure.",
     name: "Project Manager",
     company: "Thyssenkrupp Aerostructures Pvt Ltd",
     role: "Project Engineering",
-    image: "/images/products/product-3.jpg",
+    image: "/images/products/drive-control-panelzs.webp",
   },
   {
     quote: "From design to commissioning, Adler Contracts managed our entire electrification project with meticulous planning and zero safety incidents. We highly recommend their services.",
     name: "Engineering Director",
     company: "Aequs SEZ Ltd",
     role: "Infrastructure Development",
-    image: "/images/products/product-5.jpg",
+    image: "/images/products/cems-pannel.webp",
   }
 ]
 
@@ -88,11 +88,11 @@ export default function Testimonials() {
                 <img
                   src={testimonials[current].image}
                   alt={testimonials[current].company}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover brightness-100 contrast-105"
                 />
-                <div className="absolute inset-0 bg-[var(--primary)]/60 flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent flex items-end p-6">
                   <div>
-                    <p className="font-rajdhani text-white text-xs font-bold uppercase tracking-widest opacity-80">
+                    <p className="font-rajdhani text-white text-xs font-bold uppercase tracking-widest opacity-90">
                       {testimonials[current].company}
                     </p>
                   </div>

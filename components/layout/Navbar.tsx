@@ -45,21 +45,22 @@ export default function Navbar() {
       <div className="w-full mx-auto px-4 md:px-6 lg:px-8 h-full flex items-center justify-between">
         
         {/* Logo */}
-        <Link href="/" className="flex items-center group z-50">
+        <Link href="/" className="flex items-center group z-50 shrink-0">
           <img 
             src="/logo.png" 
             alt="Adler Contracts" 
-            className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+            style={{ height: '48px', width: 'auto' }}
+            className="object-contain transition-transform duration-500 group-hover:scale-105" 
           />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10">
           {navLinks.map((link) => (
             <Link 
               key={link.label} 
               href={link.href}
-              className={`nav-link ${pathname === link.href ? 'active' : ''}`}
+              className={`nav-link ${pathname === link.href ? 'active' : ''} text-xs lg:text-sm`}
             >
               {link.label}
               {link.hasDropdown && <span className="ml-1 text-[10px] opacity-50 underline-offset-4 tracking-normal transition-opacity group-hover:opacity-100">▼</span>}
@@ -68,12 +69,12 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <div className="hidden lg:block">
+        <div className="hidden md:block">
           <Link href="/contact">
             <motion.button
               whileHover={{ y: -2, boxShadow: '0 8px 30px rgba(124,179,66,0.4)', backgroundColor: 'var(--primary-dark)' }}
               whileTap={{ scale: 0.97 }}
-              className="bg-[var(--primary)] text-white font-inter font-bold text-sm tracking-[0.1em] uppercase px-8 py-3 rounded-sm transition-all"
+              className="bg-[var(--primary)] text-white font-inter font-bold text-[10px] lg:text-xs xl:text-sm tracking-[0.1em] uppercase px-4 py-2 lg:px-6 lg:py-3 xl:px-8 rounded-sm transition-all"
             >
               Get a Quote
             </motion.button>
@@ -81,7 +82,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="lg:hidden p-2 z-50" onClick={() => setMenuOpen(!menuOpen)}>
+        <button className="md:hidden p-2 z-50" onClick={() => setMenuOpen(!menuOpen)}>
           <div className={`w-6 h-0.5 mb-1.5 transition-all bg-[var(--black)] ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
           <div className={`w-6 h-0.5 mb-1.5 transition-all bg-[var(--black)] ${menuOpen ? 'opacity-0' : ''}`} />
           <div className={`w-6 h-0.5 transition-all bg-[var(--black)] ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
@@ -101,8 +102,8 @@ export default function Navbar() {
           >
             {/* Mobile Menu Header */}
             <div className="h-[72px] px-4 flex items-center justify-between border-b border-[var(--border)]">
-              <Link href="/" onClick={() => setMenuOpen(false)}>
-                <img src="/logo.png" alt="Adler Contracts" className="h-10 w-auto" />
+              <Link href="/" onClick={() => setMenuOpen(false)} className="shrink-0">
+                <img src="/logo.png" alt="Adler Contracts" style={{ height: '48px', width: 'auto' }} />
               </Link>
               <button onClick={() => setMenuOpen(false)} className="p-2">
                 <div className="w-6 h-0.5 bg-[var(--black)] rotate-45 translate-y-0.5" />

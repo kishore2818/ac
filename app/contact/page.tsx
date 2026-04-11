@@ -1,16 +1,9 @@
-'use client'
-
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import PageHero from '@/components/shared/PageHero'
 import Enquiry from '@/components/home/Enquiry'
-import dynamic from 'next/dynamic'
-
-const MapContainer = dynamic(() => import('@/components/contact/MapContainer'), { 
-  ssr: false,
-  loading: () => <div className="w-full h-full bg-[var(--gray-bg)] flex items-center justify-center font-rajdhani animate-pulse">Loading Map...</div>
-})
+import MapContainer from '@/components/contact/MapContainer'
 
 export default function ContactPage() {
   return (
@@ -37,7 +30,7 @@ export default function ContactPage() {
                </div>
 
                <div className="bg-[var(--gray-bg)] p-8 border-l-4 border-[var(--primary)]">
-                 <h3 className="font-rajdhani text-xl font-bold uppercase mb-2">Phone & Email</h3>
+                 <h3 className="font-rajdhani text-xl font-bold uppercase mb-2">Phone &amp; Email</h3>
                  <p className="font-inter text-[var(--gray)]"><a href="tel:+919035027395" className="hover:text-[var(--primary)] transition-colors">+91 90350 27395</a></p>
                  <p className="font-inter text-[var(--gray)]"><a href="mailto:Priya@adlercontracts.com" className="hover:text-[var(--primary)] transition-colors">Priya@adlercontracts.com</a></p>
                </div>
@@ -49,7 +42,7 @@ export default function ContactPage() {
                </div>
             </div>
 
-            <div className="w-full h-[500px] border border-[var(--border)] relative overflow-hidden group">
+            <div className="w-full h-[500px] border border-[var(--border)] relative overflow-hidden">
                <MapContainer />
             </div>
 
