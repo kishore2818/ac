@@ -183,13 +183,13 @@ export default function Hero() {
       <Particles />
 
       {/* Since 2014 Header - Visible and non-hidden on mobile */}
-      <div className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 z-20">
+      <div className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 sm:gap-4 z-20">
         <div className="w-px h-12 sm:h-20 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent" />
-        <span className="font-bebas text-[var(--primary)] tracking-[4px] sm:tracking-[6px] text-[10px] sm:text-xs opacity-80 vertical-text py-4">SINCE 2014</span>
+        <span className="font-bebas text-[var(--primary)] tracking-[4px] sm:tracking-[6px] text-[10px] sm:text-xs opacity-80 vertical-text py-2 sm:py-4">SINCE 2014</span>
         <div className="w-px h-12 sm:h-20 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent" />
       </div>
 
-      <div className="w-full mx-auto px-6 sm:px-12 md:px-20 relative z-20 pt-16 md:pt-0">
+      <div className="w-full mx-auto pl-10 pr-4 sm:px-12 md:px-20 relative z-20 pt-16 md:pt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 w-full">
 
           {/* Main Content */}

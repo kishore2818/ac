@@ -45,11 +45,11 @@ export default function Navbar() {
       <div className="w-full mx-auto px-4 md:px-6 lg:px-8 h-full flex items-center justify-between">
         
         {/* Logo */}
-        <Link href="/" className="flex items-center group z-50">
+        <Link href="/" className="flex items-center shrink-0 group z-50">
           <img 
             src="/logo.png" 
             alt="Adler Contracts" 
-            className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+            className="h-12 w-auto shrink-0 object-contain transition-transform duration-500 group-hover:scale-105" 
           />
         </Link>
 
@@ -101,9 +101,9 @@ export default function Navbar() {
           >
             <div className="p-6 flex flex-col">
               {/* Mobile Menu Logo */}
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
-                <Link href="/" onClick={() => setMenuOpen(false)}>
-                  <img src="/logo.png" alt="Adler Contracts" className="h-10 w-auto object-contain" />
+              <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100 shrink-0">
+                <Link href="/" onClick={() => setMenuOpen(false)} className="shrink-0">
+                  <img src="/logo.png" alt="Adler Contracts" className="h-12 w-auto shrink-0 object-contain" />
                 </Link>
                 <div className="text-[10px] uppercase tracking-widest font-bold text-[var(--primary)] bg-[var(--primary-soft)] px-2 py-1 rounded">
                    Menu
