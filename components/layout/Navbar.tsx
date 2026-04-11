@@ -18,15 +18,15 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
-  
+
   const { scrollY } = useScroll()
   const bg = useTransform(scrollY, [0, 80], ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 1)'])
   const border = useTransform(scrollY, [0, 80], ['1px solid rgba(226, 232, 240, 0)', '1px solid rgba(226, 232, 240, 1)'])
   const logoColor = useTransform(scrollY, [0, 80], ['var(--black)', 'var(--black)'])
   const shadow = useTransform(scrollY, [0, 80], ['0 0px 0px 0px rgba(0, 0, 0, 0)', '0 4px 20px -10px rgba(30, 58, 138, 0.1)'])
-  
+
   const [isScrolled, setIsScrolled] = useState(false)
-  
+
   useScroll().scrollY.on('change', (y) => setIsScrolled(y > 80))
 
   return (
@@ -43,21 +43,21 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-[1000] h-[72px]"
     >
       <div className="w-full mx-auto px-4 md:px-6 lg:px-8 h-full flex items-center justify-between">
-        
+
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0 group z-50">
-          <img 
-            src="/logo.png" 
-            alt="Adler Contracts" 
-            className="h-12 w-auto shrink-0 object-contain transition-transform duration-500 group-hover:scale-105" 
+          <img
+            src="/logo.png"
+            alt="Adler Contracts"
+            className="h-12 w-auto shrink-0 object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
-            <Link 
-              key={link.label} 
+            <Link
+              key={link.label}
               href={link.href}
               className={`nav-link ${pathname === link.href ? 'active' : ''}`}
             >
@@ -100,19 +100,11 @@ export default function Navbar() {
             className="absolute top-[72px] left-0 right-0 bg-white shadow-xl lg:hidden flex flex-col border-t border-[var(--border)] z-[999]"
           >
             <div className="p-6 flex flex-col">
-              {/* Mobile Menu Logo */}
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100 shrink-0">
-                <Link href="/" onClick={() => setMenuOpen(false)} className="shrink-0">
-                  <img src="/logo.png" alt="Adler Contracts" className="h-12 w-auto shrink-0 object-contain" />
-                </Link>
-                <div className="text-[10px] uppercase tracking-widest font-bold text-[var(--primary)] bg-[var(--primary-soft)] px-2 py-1 rounded">
-                   Menu
-                </div>
-              </div>
+
 
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
-                  <Link 
+                  <Link
                     key={link.label}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
@@ -121,7 +113,7 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                
+
                 <div className="pt-4 mt-2 border-t border-gray-100">
                   <Link href="/contact" onClick={() => setMenuOpen(false)} className="block">
                     <button className="w-full bg-[var(--primary)] text-white font-rajdhani font-bold uppercase tracking-widest py-3 rounded-sm transition-colors hover:bg-[var(--primary-dark)]">
