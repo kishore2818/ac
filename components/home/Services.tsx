@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import * as LucideIcons from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import SectionLabel from '../shared/SectionLabel'
 import ScrollReveal, { staggerContainer, fadeUp } from '../shared/ScrollReveal'
 import { services } from '@/data/services'
@@ -25,7 +26,7 @@ export default function Services({ showAll = false }: { showAll?: boolean }) {
         <ScrollReveal animation={staggerContainer}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {displayedServices.map((service) => {
-              const IconComponent = LucideIcons[service.icon as keyof typeof LucideIcons] || LucideIcons.HelpCircle
+              const IconComponent = (LucideIcons[service.icon as keyof typeof LucideIcons] as LucideIcon) || LucideIcons.HelpCircle
 
               return (
                 <motion.div 
