@@ -7,6 +7,7 @@ import { services } from '@/data/services'
 import Link from 'next/link'
 import * as LucideIcons from 'lucide-react'
 import { CheckCircle2 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -16,7 +17,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
     notFound()
   }
 
-  const IconComponent = (LucideIcons[service.icon as keyof typeof LucideIcons] || LucideIcons.HelpCircle) as any
+  const IconComponent = (LucideIcons[service.icon as keyof typeof LucideIcons] as LucideIcon) || LucideIcons.HelpCircle
 
   return (
     <>
