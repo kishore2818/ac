@@ -16,7 +16,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
     notFound()
   }
 
-  const IconComponent = LucideIcons[service.icon as keyof typeof LucideIcons] || LucideIcons.HelpCircle
+  const IconComponent = (LucideIcons[service.icon as keyof typeof LucideIcons] || LucideIcons.HelpCircle) as any
 
   return (
     <>
