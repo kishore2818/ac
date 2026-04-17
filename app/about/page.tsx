@@ -18,10 +18,10 @@ export default function AboutPage() {
           subtitle="ENGINEERING EXCELLENCE IN POWER DISTRIBUTION Since 2014" 
         />
         
-        <div className="py-24 bg-white">
-          <div className="w-full mx-auto px-8 max-w-5xl text-center">
-            <h2 className="font-bebas text-5xl md:text-7xl text-[var(--accent)] mb-8">Powering Possibilities.</h2>
-            <p className="font-inter text-xl text-[var(--gray)] leading-relaxed">
+        <div className="py-12 md:py-24 bg-white">
+          <div className="site-container max-w-5xl text-left md:text-center">
+            <h2 className="font-cormorant md:font-bebas text-4xl md:text-7xl text-[var(--accent)] mb-4 md:mb-8">Powering Possibilities.</h2>
+            <p className="font-inter text-base md:text-xl text-[var(--gray)] leading-relaxed">
               A Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions, Adler is committed to deliver from design to planning and installation.
             </p>
           </div>

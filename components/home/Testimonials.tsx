@@ -42,26 +42,26 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section className="bg-[var(--gray-bg)] py-24 border-y border-[var(--border)]">
-      <div className="w-full mx-auto px-8">
+    <section className="bg-[var(--gray-bg)] py-14 md:py-24 border-y border-[var(--border)]">
+      <div className="site-container">
         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="text-center flex flex-col items-center mb-16"
+          className="text-left md:text-center flex flex-col items-start md:items-center mb-8 md:mb-16"
         >
           <SectionLabel text="Client Feedback" color="accent" />
-          <h2 className="font-bebas text-5xl md:text-6xl text-[var(--accent)] tracking-wider">
+          <h2 className="font-cormorant md:font-bebas text-4xl md:text-6xl text-[var(--accent)] tracking-wider">
             WHAT THEY <span className="text-[var(--primary)]">SAY</span>
           </h2>
           
-          <div className="flex gap-4 mt-8">
+          <div className="flex gap-3 md:gap-4 mt-5 md:mt-8">
             <button 
               onClick={handlePrev}
               aria-label="Previous Testimonial"
-              className="w-12 h-12 border border-[var(--primary)] bg-white rounded-full flex items-center justify-center text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all shadow-sm"
+              className="w-10 h-10 md:w-12 md:h-12 border border-[var(--primary)] bg-white rounded-full flex items-center justify-center text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all shadow-sm"
             >
               ←
             </button>
@@ -83,10 +83,10 @@ export default function Testimonials() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="bg-white border text-[var(--black)] border-[var(--border)] shadow-md rounded-sm overflow-hidden flex flex-col md:flex-row"
+              className="bg-white border text-[var(--black)] border-[var(--border)] shadow-md rounded-[1.5rem] md:rounded-sm overflow-hidden flex flex-col md:flex-row"
             >
               {/* Image Panel */}
-              <div className="relative md:w-72 h-52 md:h-auto shrink-0 overflow-hidden">
+              <div className="relative md:w-72 h-44 md:h-auto shrink-0 overflow-hidden">
                 <img
                   src={testimonials[current].image}
                   alt={testimonials[current].company}
@@ -102,10 +102,10 @@ export default function Testimonials() {
               </div>
 
               {/* Content */}
-              <div className="p-10 md:p-14 relative flex-1">
+              <div className="p-5 md:p-14 relative flex-1">
                 {/* Huge quote mark background */}
-                <div className="absolute top-0 left-10 font-bebas text-[180px] text-[var(--gray-bg)] leading-none pointer-events-none select-none">
-                  "
+                <div className="absolute -top-2 left-4 md:left-10 font-bebas text-[110px] md:text-[180px] text-[var(--gray-bg)] leading-none pointer-events-none select-none">
+                  &ldquo;
                 </div>
 
                 {/* Stars */}
@@ -117,7 +117,7 @@ export default function Testimonials() {
                   ))}
                 </div>
                 
-                <p className="font-inter text-xl md:text-2xl text-[var(--gray-dark)] leading-relaxed mb-8 relative z-10 font-medium">
+                <p className="font-inter text-base md:text-2xl text-[var(--gray-dark)] leading-relaxed mb-6 md:mb-8 relative z-10 font-medium">
                   {testimonials[current].quote}
                 </p>
                 
@@ -126,7 +126,7 @@ export default function Testimonials() {
                     {testimonials[current].name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-rajdhani text-xl font-bold text-[var(--black)] uppercase tracking-wider">
+                    <h4 className="font-poppins md:font-rajdhani text-lg md:text-xl font-semibold md:font-bold text-[var(--black)] uppercase tracking-wider">
                       {testimonials[current].name}
                     </h4>
                     <p className="font-inter text-sm text-[var(--gray)]">
@@ -154,4 +154,3 @@ export default function Testimonials() {
     </section>
   )
 }
-

@@ -12,7 +12,7 @@ function ClientCard({ client }: { client: typeof clients[0] }) {
   const [imgError, setImgError] = useState(false)
   
   return (
-    <div className="aspect-square bg-white border border-[var(--border)] flex flex-col items-center justify-center p-8 hover:border-[var(--primary)] hover:shadow-xl transition-all group relative overflow-hidden">
+    <div className="aspect-square bg-white border border-[var(--border)] flex flex-col items-center justify-center p-4 md:p-8 rounded-[1.25rem] md:rounded-none hover:border-[var(--primary)] hover:shadow-xl transition-all group relative overflow-hidden">
       {!imgError && client.domain ? (
         <img 
           src={`https://logo.clearbit.com/${client.domain}`} 
@@ -22,7 +22,7 @@ function ClientCard({ client }: { client: typeof clients[0] }) {
         />
       ) : (
         <>
-          <span className="font-bebas text-2xl text-[var(--black)] group-hover:text-[var(--primary)] transition-colors text-center leading-tight">{client.name}</span>
+          <span className="font-cormorant md:font-bebas text-xl md:text-2xl text-[var(--black)] group-hover:text-[var(--primary)] transition-colors text-center leading-tight">{client.name}</span>
           <span className="font-inter text-[10px] text-[var(--gray-light)] uppercase tracking-wider text-center mt-2">{client.industry}</span>
         </>
       )}
@@ -30,7 +30,7 @@ function ClientCard({ client }: { client: typeof clients[0] }) {
       {/* Overlay to show info on hover even if image is loaded */}
       {!imgError && client.domain && (
          <div className="absolute inset-0 bg-white/95 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 p-4 backdrop-blur-sm">
-           <span className="font-bebas text-2xl text-[var(--primary)] text-center leading-tight transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{client.name}</span>
+           <span className="font-cormorant md:font-bebas text-xl md:text-2xl text-[var(--primary)] text-center leading-tight transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{client.name}</span>
            <span className="font-inter text-[10px] text-[var(--black-muted)] font-semibold uppercase tracking-wider text-center mt-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{client.industry}</span>
          </div>
       )}
@@ -48,9 +48,9 @@ export default function ClientsPage() {
           subtitle="We are incredibly proud to partner with some of India's most respected organizations." 
         />
         
-        <section className="py-24 bg-[var(--gray-bg)]">
-          <div className="w-full max-w-7xl mx-auto px-8">
-             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <section className="py-12 md:py-24 bg-[var(--gray-bg)]">
+          <div className="site-container max-w-7xl">
+             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
                {clients.map((client, i) => (
                  <ClientCard key={i} client={client} />
                ))}

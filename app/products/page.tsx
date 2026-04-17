@@ -15,12 +15,12 @@ export default function ProductsPage() {
           title="OUR PRODUCTS" 
           subtitle="Engineered for reliability, safety, and scale. Browse our full range of custom-built electrical panels." 
         />
-        <section className="bg-[var(--gray-bg)] py-24">
-          <div className="w-full mx-auto px-8">
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <section className="bg-[var(--gray-bg)] py-12 md:py-24">
+          <div className="site-container">
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                 {products.map((product) => (
-                  <div key={product.slug} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden group hover:border-[var(--primary)] transition-colors">
-                    <div className="h-48 overflow-hidden bg-[var(--black)] relative border-b border-[var(--primary)]/10">
+                  <div key={product.slug} className="bg-white border border-[var(--border)] rounded-[1.25rem] md:rounded-sm overflow-hidden group hover:border-[var(--primary)] transition-colors">
+                    <div className="h-52 md:h-48 overflow-hidden bg-[var(--black)] relative border-b border-[var(--primary)]/10">
                        <Image 
                          src={product.image}
                          fill
@@ -32,8 +32,8 @@ export default function ProductsPage() {
                          {product.category}
                        </span>
                     </div>
-                    <div className="p-6">
-                      <h3 className="font-rajdhani text-xl font-bold uppercase tracking-wider mb-2">{product.name}</h3>
+                    <div className="p-5 md:p-6">
+                      <h3 className="font-poppins md:font-rajdhani text-lg md:text-xl font-semibold md:font-bold uppercase tracking-[0.08em] md:tracking-wider mb-2">{product.name}</h3>
                       <p className="font-inter text-sm text-[var(--gray)] line-clamp-2 mb-4">{product.description}</p>
                       <Link href={`/products/${product.slug}`} className="text-[var(--primary)] font-rajdhani font-bold tracking-widest text-sm uppercase group-hover:underline">
                         View Details →

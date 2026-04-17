@@ -40,19 +40,19 @@ export default function StatsCounter() {
   ]
 
   return (
-    <section className="bg-[var(--gray-bg)] py-20 relative z-10 -mt-8">
-      <div className="w-full mx-auto px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <section className="bg-[var(--gray-bg)] py-10 md:py-20 relative z-10 md:-mt-8">
+      <div className="site-container">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {stats.map((s, i) => (
             <ScrollReveal key={i} delay={i * 0.1} className="h-full">
               <motion.div 
                 whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(124,179,66,0.1)' }}
-                className="bg-white p-8 rounded-sm shadow-sm border-t-4 border-[var(--primary)] h-full flex flex-col justify-center text-center"
+                className="bg-white p-5 md:p-8 rounded-[1.25rem] md:rounded-sm shadow-sm border-t-4 border-[var(--primary)] h-full flex flex-col justify-center text-center"
               >
-                <div className="font-bebas text-5xl md:text-6xl text-[var(--primary)] mb-2">
+                <div className="font-cormorant md:font-bebas text-4xl md:text-6xl text-[var(--primary)] mb-1 md:mb-2">
                   <Counter end={s.value} suffix={s.suffix} />
                 </div>
-                <div className="font-rajdhani text-sm uppercase tracking-widest text-[var(--gray)] font-bold">
+                <div className="font-poppins md:font-rajdhani text-[11px] md:text-sm uppercase tracking-[0.14em] md:tracking-widest text-[var(--gray)] font-semibold md:font-bold">
                   {s.label}
                 </div>
               </motion.div>

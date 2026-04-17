@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const IMAGES = [
@@ -19,6 +19,21 @@ const statsData = [
   { end: 14, label: "Happy Clients", suffix: "" },
   { end: 2, label: "Regional Offices", suffix: "" }
 ];
+
+const PARTICLES = [
+  { id: 0, x: 12, y: 82, size: 3, delay: 0.4, duration: 7 },
+  { id: 1, x: 28, y: 65, size: 4, delay: 1.2, duration: 9 },
+  { id: 2, x: 45, y: 75, size: 2, delay: 2.3, duration: 8 },
+  { id: 3, x: 62, y: 70, size: 3, delay: 3.1, duration: 10 },
+  { id: 4, x: 78, y: 84, size: 4, delay: 0.8, duration: 7 },
+  { id: 5, x: 88, y: 58, size: 2, delay: 1.8, duration: 8 },
+  { id: 6, x: 18, y: 50, size: 3, delay: 2.7, duration: 9 },
+  { id: 7, x: 35, y: 40, size: 2, delay: 4.1, duration: 8 },
+  { id: 8, x: 52, y: 32, size: 4, delay: 1.1, duration: 9 },
+  { id: 9, x: 68, y: 46, size: 3, delay: 2.5, duration: 10 },
+  { id: 10, x: 84, y: 36, size: 2, delay: 3.6, duration: 7 },
+  { id: 11, x: 8, y: 26, size: 3, delay: 0.9, duration: 9 },
+]
 
 function StatsCard({ stat, isActive, isMobile, index }: { stat: typeof statsData[0], isActive: boolean, isMobile: boolean, index: number }) {
   return (
@@ -59,7 +74,7 @@ function StatsCard({ stat, isActive, isMobile, index }: { stat: typeof statsData
   )
 }
 
-function AutoHighlightingStats({ isMobile }: { isMobile: boolean }) {
+function AutoHighlightingStats() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -69,51 +84,35 @@ function AutoHighlightingStats({ isMobile }: { isMobile: boolean }) {
     return () => clearInterval(timer);
   }, []);
 
-  if (isMobile) {
-    // Infinite loop for mobile
-    const duplicatedStats = [...statsData, ...statsData];
-    return (
-      <div className="w-full overflow-hidden py-4 -mx-6 px-6">
-        <motion.div 
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="flex w-max"
-        >
-          {duplicatedStats.map((stat, i) => (
-            <StatsCard key={i} stat={stat} isActive={false} isMobile={true} index={i} />
-          ))}
-        </motion.div>
-      </div>
-    );
-  }
-
   return (
-    <div className="w-[300px] flex flex-col gap-4 relative z-30 ml-8">
-      {statsData.map((stat, i) => (
-        <StatsCard key={i} stat={stat} isActive={activeIndex === i} isMobile={false} index={i} />
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-2 gap-3 lg:hidden">
+        {statsData.map((stat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45 + i * 0.08 }}
+            className="rounded-[1.25rem] border border-white/15 bg-white/10 p-4 backdrop-blur-xl"
+          >
+            <div className="font-cormorant text-3xl text-white leading-none">{stat.end}{stat.suffix}</div>
+            <div className="mt-2 font-poppins text-[10px] uppercase tracking-[0.18em] text-white/75">{stat.label}</div>
+          </motion.div>
+        ))}
+      </div>
+      <div className="hidden lg:flex w-[300px] flex-col gap-4 relative z-30 ml-8">
+        {statsData.map((stat, i) => (
+          <StatsCard key={i} stat={stat} isActive={activeIndex === i} isMobile={false} index={i} />
+        ))}
+      </div>
+    </>
   )
 }
 
 function Particles() {
-  const [particles, setParticles] = useState<{ id: number, x: number, y: number, size: number, delay: number, duration: number }[]>([])
-
-  useEffect(() => {
-    const arr = Array.from({ length: 15 }).map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 2,
-      delay: Math.random() * 5,
-      duration: Math.random() * 5 + 5
-    }))
-    setParticles(arr)
-  }, [])
-
   return (
-    <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-20">
-      {particles.map(p => (
+    <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-20 hidden md:block">
+      {PARTICLES.map(p => (
         <motion.div
           key={p.id}
           initial={{ opacity: 0, x: `${p.x}vw`, y: `${p.y}vh` }}
@@ -137,19 +136,13 @@ function Particles() {
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [windowWidth, setWindowWidth] = useState(0)
   
   useEffect(() => {
-    setWindowWidth(window.innerWidth)
-    const handleResize = () => setWindowWidth(window.innerWidth)
-    window.addEventListener('resize', handleResize)
-    
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % IMAGES.length)
     }, 5000)
     
     return () => {
-      window.removeEventListener('resize', handleResize)
       clearInterval(timer)
     }
   }, [])
@@ -157,11 +150,10 @@ export default function Hero() {
   const { scrollY } = useScroll()
   const scaleX = useSpring(useTransform(scrollY, [0, 1000], [0, 1]), { stiffness: 100, damping: 30 })
 
-  const words = "POWERING POSSIBILITIES. DELIVERING END TO END ELECTRICAL SOLUTIONS.".split(" ")
-  const isMobile = windowWidth > 0 && windowWidth < 1024;
+  const words = "Powering possibilities with reliable electrical solutions.".split(" ")
 
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-[var(--gray-bg)] flex items-center">
+    <section className="relative min-h-[560px] md:min-h-[600px] lg:h-screen w-full overflow-hidden bg-[var(--gray-bg)] flex items-center">
 
       {/* Slideshow Background */}
       <div className="absolute inset-0 z-0">
@@ -183,36 +175,36 @@ export default function Hero() {
       <Particles />
 
       {/* Since 2014 Header - Visible and non-hidden on mobile */}
-      <div className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 sm:gap-4 z-20">
+      <div className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-2 sm:gap-4 z-20">
         <div className="w-px h-12 sm:h-20 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent" />
         <span className="font-bebas text-[var(--primary)] tracking-[4px] sm:tracking-[6px] text-[10px] sm:text-xs opacity-80 vertical-text py-2 sm:py-4">SINCE 2014</span>
         <div className="w-px h-12 sm:h-20 bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent" />
       </div>
 
-      <div className="w-full mx-auto pl-10 pr-4 sm:px-12 md:px-20 relative z-20 pt-16 md:pt-0">
+      <div className="site-container relative z-20 pt-24 pb-8 md:pt-20 md:pb-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 w-full">
 
           {/* Main Content */}
-          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left max-w-4xl">
+          <div className="flex-1 flex flex-col items-start text-left max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-4 sm:mb-6 shadow-sm"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/35 backdrop-blur-sm border border-white/20 mb-4 sm:mb-6 shadow-sm"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
               <span className="font-rajdhani text-white text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-bold">
-                ISO 9001:2015 Certified Specialists
+                ISO 9001:2015 Certified Electrical Specialists
               </span>
             </motion.div>
 
-            <h1 className="font-bebas text-[clamp(2.5rem,7vw,5.5rem)] text-white leading-[0.95] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl">
+            <h1 className="font-cormorant md:font-bebas text-[clamp(2.85rem,10vw,5.5rem)] text-white leading-[0.92] tracking-tight mb-4 sm:mb-6 drop-shadow-2xl max-w-3xl">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.05 }}
-                  className={`${word.includes('POSSIBILITIES') || word.includes('SOLUTIONS') ? 'text-[var(--primary)]' : ''} inline-block mr-2 sm:mr-4`}
+                  className={`${word.toLowerCase().includes('possibilities') || word.toLowerCase().includes('solutions.') ? 'text-[var(--primary)]' : ''} inline-block mr-2 sm:mr-4`}
                 >
                   {word}
                 </motion.span>
@@ -223,21 +215,21 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="font-inter text-gray-200 text-sm sm:text-lg md:text-xl max-w-2xl mb-6 sm:mb-8 leading-relaxed font-normal opacity-90"
+              className="font-inter text-white/85 text-sm sm:text-lg md:text-xl max-w-2xl mb-6 sm:mb-8 leading-relaxed font-normal"
             >
-              A Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions. Committed to deliver from design to planning and installation.
+              Adler Contracts delivers turnkey electrical systems for industrial, commercial, and institutional projects, from design and planning to installation and commissioning.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
             >
               <Link href="/services" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ y: -3, boxShadow: '0 10px 25px rgba(124,179,66,0.3)' }}
-                  className="shimmer-btn bg-[var(--primary)] text-white font-rajdhani uppercase tracking-widest font-bold px-8 py-3.5 rounded-sm shadow-xl w-full text-sm sm:text-base"
+                  className="shimmer-btn bg-[var(--primary)] text-white font-poppins md:font-rajdhani uppercase tracking-[0.18em] font-semibold md:font-bold px-6 sm:px-8 py-3.5 rounded-2xl md:rounded-sm shadow-xl w-full text-sm sm:text-base"
                 >
                   Explore Expertise
                 </motion.button>
@@ -245,7 +237,7 @@ export default function Hero() {
               <Link href="/projects" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ y: -3, backgroundColor: 'rgba(255,255,255,0.1)' }}
-                  className="border-2 border-white text-white bg-black/20 backdrop-blur font-rajdhani uppercase tracking-widest font-bold px-8 py-3.5 rounded-sm hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors w-full text-sm sm:text-base"
+                  className="border border-white/35 text-white bg-black/20 backdrop-blur font-poppins md:font-rajdhani uppercase tracking-[0.18em] font-semibold md:font-bold px-6 sm:px-8 py-3.5 rounded-2xl md:rounded-sm hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors w-full text-sm sm:text-base"
                 >
                   Our Projects
                 </motion.button>
@@ -253,9 +245,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Stats Section - Carousel on mobile, Stack on desktop */}
-          <div className="w-full lg:w-auto mt-6 lg:mt-0">
-             <AutoHighlightingStats isMobile={isMobile} />
+          <div className="w-full lg:w-auto mt-4 lg:mt-0">
+             <AutoHighlightingStats />
           </div>
 
         </div>

@@ -1,23 +1,23 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 
-export const fadeUp: any = {
+export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 }
 
-export const fadeLeft: any = {
+export const fadeLeft: Variants = {
   hidden: { opacity: 0, x: -50 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 }
 
-export const fadeRight: any = {
+export const fadeRight: Variants = {
   hidden: { opacity: 0, x: 50 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 }
 
-export const staggerContainer: any = {
+export const staggerContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 }
@@ -29,11 +29,11 @@ export default function ScrollReveal({
   delay = 0,
 }: {
   children: React.ReactNode
-  animation?: any
+  animation?: Variants
   className?: string
   delay?: number
 }) {
-  const variantWithDelay = {
+  const variantWithDelay: Variants = {
     ...animation,
     visible: {
       ...animation.visible,

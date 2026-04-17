@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { bebasNeue, rajdhani, inter } from '@/lib/fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -14,10 +13,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${bebasNeue.variable} ${rajdhani.variable} ${inter.variable} h-full`}
-    >
+    <html lang="en" className="h-full">
       <body className="min-h-full bg-white text-black antialiased overflow-x-hidden">
         {children}
       </body>

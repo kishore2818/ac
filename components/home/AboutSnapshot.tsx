@@ -9,7 +9,7 @@ import Link from 'next/link'
 export default function AboutSnapshot() {
   return (
     <section className="bg-white py-12 md:py-16 overflow-hidden">
-      <div className="w-full mx-auto px-8">
+      <div className="site-container">
         
         {/* Centered Section Header */}
         <motion.div 
@@ -17,39 +17,39 @@ export default function AboutSnapshot() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8 }}
-          className="text-center flex flex-col items-center mb-10 sm:mb-12"
+          className="text-center flex flex-col items-start md:items-center mb-8 sm:mb-12"
         >
           <SectionLabel text="Who We Are" color="accent" centered={true} />
-          <h2 className="font-bebas text-[clamp(2rem,6vw,3.75rem)] leading-[1.1] text-[var(--accent)] mt-4 px-4">
-            ENGINEERING EXCELLENCE IN <span className="text-[var(--primary)] text-[clamp(2rem,6vw,3.75rem)] inline-block ml-2 px-4 py-1 border-2 border-[var(--primary)] bg-[var(--primary-soft)] rounded-lg shadow-sm">POWER DISTRIBUTION</span>
+          <h2 className="font-cormorant md:font-bebas text-[clamp(2.2rem,8vw,3.75rem)] leading-[1] text-[var(--accent)] mt-2 md:mt-4">
+            Engineering excellence in <span className="text-[var(--primary)] inline-block md:ml-2 md:px-4 md:py-1 md:border-2 md:border-[var(--primary)] md:bg-[var(--primary-soft)] md:rounded-lg md:shadow-sm">power distribution</span>
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-[1100px] mx-auto">
           
           {/* Left Column (Text) */}
-          <ScrollReveal animation={fadeLeft} className="flex flex-col items-center lg:items-start text-center lg:text-left mb-10 lg:mb-0 lg:ml-auto lg:pr-4">
+          <ScrollReveal animation={fadeLeft} className="flex flex-col items-start lg:items-start text-left mb-10 lg:mb-0 lg:ml-auto lg:pr-4 order-2 lg:order-1">
             <motion.p 
               initial={{ x: -20, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="font-inter text-[var(--black-soft)] font-medium text-lg mb-8 leading-relaxed max-w-2xl border-l-4 border-[var(--primary)] pl-6 py-3 bg-[var(--primary-soft)] rounded-r-lg shadow-sm"
+              className="font-inter text-[var(--black-soft)] font-medium text-base md:text-lg mb-6 md:mb-8 leading-relaxed max-w-2xl border-l-4 border-[var(--primary)] pl-4 md:pl-6 py-3 bg-[var(--primary-soft)] rounded-r-2xl md:rounded-r-lg shadow-sm"
             >
               Adler Contracts is a Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions. Our reputation is built on meticulous planning, robust project management, and a relentless focus on quality and safety.
             </motion.p>
 
-            <div className="space-y-6 mb-10 w-full max-w-xl">
+            <div className="space-y-4 md:space-y-6 mb-8 md:mb-10 w-full max-w-xl">
               {[
                 { i: '01', title: 'Meticulous Planning', desc: 'Detailed execution strategies for precision delivery.' },
                 { i: '02', title: 'Quality & Safety First', desc: 'Uncompromising standards in every structure we deliver.' },
                 { i: '03', title: 'Transparent Partnerships', desc: 'Built on trust, speed, and optimum cost management.' },
               ].map((feat, idx) => (
-                <div key={idx} className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                <div key={idx} className="flex items-start gap-4 rounded-2xl border border-[var(--border)] bg-[var(--gray-bg)] px-4 py-4 sm:bg-transparent sm:border-0 sm:px-0 sm:py-0">
                   <div className="font-bebas text-2xl text-[var(--primary)] border-b-2 border-primary-200 h-8">{feat.i}</div>
-                  <div className="text-center sm:text-left">
-                    <h4 className="font-rajdhani font-bold text-xl uppercase mb-1">{feat.title}</h4>
-                    <p className="font-inter text-sm text-[var(--gray-light)]">{feat.desc}</p>
+                  <div>
+                    <h4 className="font-poppins md:font-rajdhani font-semibold md:font-bold text-lg md:text-xl uppercase mb-1">{feat.title}</h4>
+                    <p className="font-inter text-sm text-[var(--gray)]">{feat.desc}</p>
                   </div>
                 </div>
               ))}
@@ -58,7 +58,7 @@ export default function AboutSnapshot() {
             <Link href="/about">
               <motion.button 
                 whileHover={{ backgroundColor: 'var(--primary)', color: 'white' }}
-                className="border-2 border-[var(--primary)] text-[var(--primary)] font-rajdhani uppercase tracking-widest font-bold px-8 py-3 rounded-sm transition-colors"
+                className="border-2 border-[var(--primary)] text-[var(--primary)] font-poppins md:font-rajdhani uppercase tracking-[0.18em] font-semibold md:font-bold px-6 md:px-8 py-3 rounded-2xl md:rounded-sm transition-colors w-full sm:w-auto"
               >
                 Read More About Us
               </motion.button>
@@ -66,14 +66,14 @@ export default function AboutSnapshot() {
           </ScrollReveal>
 
           {/* Right Column (Images) */}
-          <ScrollReveal animation={fadeRight} delay={0.2} className="relative w-full">
+          <ScrollReveal animation={fadeRight} delay={0.2} className="relative w-full order-1 lg:order-2">
             {/* Background decorative stripe */}
             <div 
-              className="absolute -top-12 -right-12 w-3/4 h-[120%] bg-[var(--gray-bg)] z-0"
+              className="absolute -top-8 -right-4 w-3/4 h-[115%] bg-[var(--gray-bg)] z-0 hidden md:block"
               style={{ clipPath: 'polygon(20% 0, 100% 0, 80% 100%, 0 100%)' }}
             />
             
-            <div className="relative z-10 w-[85%] lg:w-[80%] mx-auto lg:mr-auto lg:ml-8 aspect-[4/5] group">
+            <div className="relative z-10 w-full max-w-sm lg:w-[80%] mx-auto lg:mr-auto lg:ml-8 aspect-[4/5] group">
               
               {/* Inner container to clip the image scaling without clipping the badges */}
               <div className="absolute inset-0 bg-[var(--black)] p-3 shadow-2xl rounded-sm overflow-hidden border border-gray-100">
@@ -94,7 +94,7 @@ export default function AboutSnapshot() {
               <motion.div 
                 animate={{ y: [0, -10, 0] }} 
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute top-4 sm:top-12 -left-2 sm:-left-8 bg-white p-3 sm:p-4 shadow-xl border-l-4 border-[var(--primary)] rounded-sm flex items-center gap-3 z-30"
+                className="absolute top-4 sm:top-12 left-3 sm:-left-8 bg-white p-3 sm:p-4 shadow-xl border-l-4 border-[var(--primary)] rounded-2xl md:rounded-sm flex items-center gap-3 z-30"
               >
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[var(--primary-soft)] rounded-full flex justify-center items-center">
                   <CheckCircle className="text-[var(--primary)] w-4 h-4 sm:w-5 sm:h-5" />
@@ -109,7 +109,7 @@ export default function AboutSnapshot() {
               <motion.div 
                 animate={{ y: [0, 10, 0] }} 
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-4 sm:-bottom-8 -right-2 sm:-right-8 bg-[var(--primary)] text-white p-4 sm:p-6 shadow-2xl rounded-sm z-30 flex flex-col items-center sm:items-start"
+                className="absolute -bottom-4 sm:-bottom-8 right-3 sm:-right-8 bg-[var(--primary)] text-white p-4 sm:p-6 shadow-2xl rounded-2xl md:rounded-sm z-30 flex flex-col items-center sm:items-start"
               >
                 <div className="font-bebas text-4xl sm:text-5xl mb-1 flex items-baseline">10<span className="text-xl sm:text-2xl ml-1">+</span></div>
                 <div className="font-rajdhani tracking-widest text-center sm:text-left uppercase text-[10px] sm:text-xs font-bold w-full sm:w-24">Years of Excellence</div>

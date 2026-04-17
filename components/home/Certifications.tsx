@@ -18,34 +18,34 @@ export default function Certifications() {
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-white py-16 lg:py-24 h-full flex flex-col justify-center border-l lg:border-[var(--border)]"
+      className="bg-white py-12 lg:py-24 h-full flex flex-col justify-center border-t lg:border-l lg:border-t-0 border-[var(--border)]"
     >
-      <div className="w-full max-w-2xl mx-auto px-6 lg:px-12">
+      <div className="site-container max-w-2xl">
         
-        <div className="text-center flex flex-col items-center mb-16">
+        <div className="text-left md:text-center flex flex-col items-start md:items-center mb-8 md:mb-16">
           <SectionLabel text="Quality Assured" color="accent" />
-          <h2 className="font-bebas text-5xl md:text-6xl text-[var(--black)] uppercase">
+          <h2 className="font-cormorant md:font-bebas text-4xl md:text-6xl text-[var(--black)] uppercase">
             Certifications & <span className="text-[var(--primary)]">Licenses</span>
           </h2>
         </div>
 
-        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
+        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
           {certs.map((cert, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
               whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(124,179,66,0.1)' }}
-              className="bg-white border text-center border-[var(--border)] p-8 rounded-sm relative overflow-hidden group transition-all"
+              className="bg-white border text-left md:text-center border-[var(--border)] p-5 md:p-8 rounded-[1.25rem] md:rounded-sm relative overflow-hidden group transition-all"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-[var(--primary)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
               
-              <div className="w-16 h-16 mx-auto bg-[var(--gray-bg)] rounded-full flex justify-center items-center mb-6 group-hover:bg-[var(--primary-soft)] transition-colors">
+              <div className="w-14 h-14 md:w-16 md:h-16 md:mx-auto bg-[var(--gray-bg)] rounded-full flex justify-center items-center mb-4 md:mb-6 group-hover:bg-[var(--primary-soft)] transition-colors">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d={cert.icon} />
                 </svg>
               </div>
               
-              <h3 className="font-bebas text-2xl text-[var(--black)] mb-1 tracking-wide">{cert.name}</h3>
+              <h3 className="font-cormorant md:font-bebas text-2xl text-[var(--black)] mb-1 tracking-wide">{cert.name}</h3>
               <p className="font-inter text-[var(--gray-light)] text-sm">{cert.org}</p>
             </motion.div>
           ))}

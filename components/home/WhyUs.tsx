@@ -20,22 +20,22 @@ export default function WhyUs() {
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-[var(--gray-bg)] py-16 lg:py-24 h-full flex flex-col justify-center"
+      className="bg-[var(--gray-bg)] py-12 lg:py-24 h-full flex flex-col justify-center"
     >
-      <div className="w-full max-w-2xl mx-auto px-6 lg:px-12">
+      <div className="site-container max-w-2xl">
         {/* Centered Section Header */}
-        <div className="text-center flex flex-col items-center mb-16">
+        <div className="text-left md:text-center flex flex-col items-start md:items-center mb-8 md:mb-16">
           <SectionLabel text="The Adler Advantage" color="accent" />
-          <h2 className="font-bebas text-5xl md:text-6xl mb-4 text-[var(--accent)] tracking-wider">
+          <h2 className="font-cormorant md:font-bebas text-4xl md:text-6xl mb-3 md:mb-4 text-[var(--accent)] tracking-wider">
             WHY CHOOSE <span className="text-[var(--primary)]">US</span>?
           </h2>
-          <p className="font-inter text-[var(--gray)] text-lg mb-8 leading-relaxed max-w-2xl">
+          <p className="font-inter text-[var(--gray)] text-sm md:text-lg mb-6 md:mb-8 leading-relaxed max-w-2xl">
             Our reputation is built on meticulous planning, robust project management, and a relentless focus on quality, safety, and speed. We deliver turnkey electrical solutions from design to commissioning — on time and within budget.
           </p>
           <Link href="/about">
             <motion.button 
               whileHover={{ scale: 1.05 }}
-              className="bg-[var(--primary)] text-white font-rajdhani uppercase tracking-widest font-bold px-8 py-3 rounded-sm shadow-lg shadow-[var(--primary-glow)]"
+              className="w-full sm:w-auto bg-[var(--primary)] text-white font-poppins md:font-rajdhani uppercase tracking-[0.18em] font-semibold md:font-bold px-6 md:px-8 py-3 rounded-2xl md:rounded-sm shadow-lg shadow-[var(--primary-glow)]"
             >
               Learn More
             </motion.button>
@@ -43,18 +43,18 @@ export default function WhyUs() {
         </div>
 
         {/* 2x2 Feature Grid */}
-        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto">
           {reasons.map((r, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
               whileHover={{ scale: 1.03, borderColor: 'var(--primary)' }}
-              className="bg-white p-8 rounded-sm shadow-sm border border-[var(--border)] transition-colors hover:bg-[var(--primary-soft)] cursor-pointer group"
+              className="bg-white p-5 md:p-8 rounded-[1.25rem] md:rounded-sm shadow-sm border border-[var(--border)] transition-colors hover:bg-[var(--primary-soft)] cursor-pointer group"
             >
               <div className="w-14 h-14 rounded-full bg-[var(--primary-glow)] flex items-center justify-center mb-6 border border-[var(--primary)]/20 group-hover:bg-[var(--primary)] group-hover:text-white transition-all text-[var(--primary)]">
                 <r.icon size={24} strokeWidth={1.5} />
               </div>
-              <h3 className="font-rajdhani text-xl font-bold uppercase mb-3 text-[var(--accent)]">{r.title}</h3>
+              <h3 className="font-poppins md:font-rajdhani text-lg md:text-xl font-semibold md:font-bold uppercase mb-2 md:mb-3 text-[var(--accent)]">{r.title}</h3>
               <p className="font-inter text-sm text-[var(--gray)] line-clamp-3">
                 {r.desc}
               </p>

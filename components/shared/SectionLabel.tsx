@@ -31,20 +31,20 @@ export default function SectionLabel({
 
   if (centered) {
     return (
-      <div className="flex items-center justify-center gap-3 mb-4 font-rajdhani">
+      <div className="inline-flex items-center justify-center gap-3 mb-4 font-poppins rounded-full border border-[var(--border)] bg-white/80 px-4 py-2 shadow-sm">
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: 24 }}
+          whileInView={{ width: 20 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className={`h-[2px] ${getLineColor()}`}
         />
-        <span className={`text-sm tracking-[0.2em] font-bold uppercase ${getTextColor()}`}>
+        <span className={`text-[11px] md:text-xs tracking-[0.22em] font-semibold uppercase ${getTextColor()}`}>
           {text}
         </span>
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: 24 }}
+          whileInView={{ width: 20 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className={`h-[2px] ${getLineColor()}`}
@@ -54,15 +54,15 @@ export default function SectionLabel({
   }
 
   return (
-    <div className="flex items-center gap-3 mb-4 font-rajdhani">
+    <div className="inline-flex items-center gap-3 mb-4 font-poppins rounded-full border border-[var(--border)] bg-white/80 px-4 py-2 shadow-sm">
       <motion.div
         initial={{ width: 0 }}
-        whileInView={{ width: 32 }}
+        whileInView={{ width: 20 }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`h-[2px] ${getLineColor()}`}
       />
-      <span className={`text-sm tracking-[0.2em] font-bold uppercase ${getTextColor()}`}>
+      <span className={`text-[11px] md:text-xs tracking-[0.22em] font-semibold uppercase ${getTextColor()}`}>
         {text}
       </span>
     </div>

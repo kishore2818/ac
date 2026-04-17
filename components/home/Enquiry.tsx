@@ -62,17 +62,17 @@ export default function Enquiry() {
         boxShadow: "inset 0 0 40px rgba(124, 179, 66, 0.08)"
       }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-white py-20 md:py-24 relative overflow-hidden h-full flex flex-col justify-center border-l lg:border-[var(--border)] group"
+      className="bg-white py-12 md:py-24 relative overflow-hidden h-full flex flex-col justify-center border-t lg:border-l lg:border-t-0 lg:border-[var(--border)] group"
     >
       
       {/* Background Radial Light Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,var(--primary-soft)_0%,transparent_65%)] pointer-events-none group-hover:scale-110 transition-transform duration-700" />
 
-      <div className="w-full max-w-2xl mx-auto px-6 md:px-12 relative z-10 transition-transform duration-500 group-hover:scale-[1.01]">
+      <div className="site-container max-w-2xl relative z-10 transition-transform duration-500 group-hover:scale-[1.01]">
         
-        <div className="text-center mb-10 md:mb-12">
+        <div className="text-left md:text-center mb-8 md:mb-12">
           <SectionLabel text="Request a Quote" color="accent" />
-          <h2 className="font-bebas text-4xl md:text-6xl text-[var(--accent)] tracking-wider">
+          <h2 className="font-cormorant md:font-bebas text-4xl md:text-6xl text-[var(--accent)] tracking-wider">
             READY TO POWER UP YOUR <span className="text-[var(--primary)]">PROJECT?</span>
           </h2>
           <p className="font-inter text-[var(--gray)] mt-4 max-w-xl mx-auto text-sm md:text-base">
@@ -84,8 +84,8 @@ export default function Enquiry() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white border border-[var(--border)] border-t-[4px] border-t-[var(--primary)] rounded-sm p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative"
-        >
+            className="bg-white border border-[var(--border)] border-t-[4px] border-t-[var(--primary)] rounded-[1.5rem] md:rounded-sm p-5 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative"
+          >
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
             
             <div className="space-y-2">
@@ -134,7 +134,7 @@ export default function Enquiry() {
                 disabled={isSubmitting}
                 whileHover={{ y: -2, boxShadow: '0 8px 30px rgba(124,179,66,0.25)' }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full shimmer-btn bg-[var(--primary)] text-white font-rajdhani font-bold text-lg tracking-widest uppercase py-4 rounded-sm transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full shimmer-btn bg-[var(--primary)] text-white font-poppins md:font-rajdhani font-semibold md:font-bold text-base md:text-lg tracking-[0.18em] uppercase py-4 rounded-2xl md:rounded-sm transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">
@@ -158,7 +158,7 @@ export default function Enquiry() {
                 exit={{ opacity: 0 }}
                 className="absolute top-4 right-4 bg-green-500 text-white font-inter text-sm font-medium px-4 py-2 rounded shadow-lg flex items-center gap-2"
               >
-                <span>✓</span> We'll contact you within 24 hours!
+                <span>✓</span> We&apos;ll contact you within 24 hours!
               </motion.div>
             )}
             {status === 'error' && (

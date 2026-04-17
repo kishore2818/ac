@@ -37,24 +37,24 @@ const trainingItems = [
 
 export default function Framework() {
   return (
-    <section className="py-20 md:py-24 bg-[var(--gray-bg)]">
-      <div className="w-full mx-auto px-6 md:px-12">
+    <section className="py-12 md:py-24 bg-[var(--gray-bg)]">
+      <div className="site-container">
         
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-bebas text-4xl md:text-5xl text-[var(--accent)] mb-4 uppercase">Quality & Safety <span className="text-[var(--primary)]">First</span></h2>
+        <div className="text-left md:text-center mb-8 md:mb-16">
+          <h2 className="font-cormorant md:font-bebas text-4xl md:text-5xl text-[var(--accent)] mb-3 md:mb-4 uppercase">Quality & Safety <span className="text-[var(--primary)]">First</span></h2>
           <p className="font-inter text-[var(--gray)] max-w-2xl mx-auto text-sm md:text-base">
             We lead with Quality and build with Safety. Investing in our people ensures long-term reliability.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {frameworks.map((f, i) => (
-            <div key={f.title} className="bg-white p-10 rounded-sm shadow-sm border-t-2 border-[var(--primary)]">
-              <div className="flex items-center gap-4 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-16">
+          {frameworks.map((f) => (
+            <div key={f.title} className="bg-white p-5 md:p-10 rounded-[1.5rem] md:rounded-sm shadow-sm border-t-2 border-[var(--primary)]">
+              <div className="flex items-center gap-4 mb-5 md:mb-8">
                 <div className="text-[var(--primary)]">
                   <f.icon size={40} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bebas text-3xl uppercase tracking-wide">{f.title}</h3>
+                <h3 className="font-cormorant md:font-bebas text-3xl uppercase tracking-wide">{f.title}</h3>
               </div>
               <ul className="space-y-4">
                 {f.items.map((item, idx) => (
@@ -75,7 +75,7 @@ export default function Framework() {
           ))}
         </div>
 
-        <div className="bg-[var(--accent)] text-white p-12 rounded-sm overflow-hidden relative">
+        <div className="bg-[var(--accent)] text-white p-6 md:p-12 rounded-[1.5rem] md:rounded-sm overflow-hidden relative">
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 blur-[100px] -mb-48 -mr-48 rounded-full" />
           <div className="relative z-10">
             <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
@@ -83,7 +83,7 @@ export default function Framework() {
                 <BookOpen size={40} />
               </div>
               <div>
-                <h3 className="font-bebas text-4xl mb-2">Skill and Safety Training</h3>
+                <h3 className="font-cormorant md:font-bebas text-3xl md:text-4xl mb-2">Skill and Safety Training</h3>
                 <p className="font-inter text-blue-100 max-w-xl">Investing in our people ensures long-term reliability. We conduct regular training sessions for various critical procedures.</p>
               </div>
             </div>

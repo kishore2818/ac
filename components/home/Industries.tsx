@@ -16,26 +16,26 @@ const industries = [
 
 export default function Industries() {
   return (
-    <section className="bg-[var(--gray-bg)] py-20 md:py-32 border-y border-[var(--border)]">
-      <div className="w-full mx-auto px-6 md:px-12">
+    <section className="bg-[var(--gray-bg)] py-14 md:py-32 border-y border-[var(--border)]">
+      <div className="site-container">
 
-        <div className="text-center flex flex-col items-center mb-12 md:mb-16">
+        <div className="text-left md:text-center flex flex-col items-start md:items-center mb-8 md:mb-16">
           <SectionLabel text="Industries We Serve" color="accent" />
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            <Zap className="w-10 h-10 text-[var(--primary)] animate-pulse mb-2 md:mb-0" />
-            <h2 className="font-bebas text-4xl md:text-6xl uppercase text-[var(--accent)] tracking-wider">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-3 md:gap-4">
+            <Zap className="w-8 h-8 md:w-10 md:h-10 text-[var(--primary)] animate-pulse mb-1 md:mb-0" />
+            <h2 className="font-cormorant md:font-bebas text-4xl md:text-6xl uppercase text-[var(--accent)] tracking-wider">
               Powering <span className="text-[var(--primary)]">Every Sector</span>
             </h2>
           </div>
         </div>
 
-        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industries.map((ind, i) => (
+        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {industries.map((ind) => (
             <motion.div
               key={ind.name}
               variants={fadeUp}
               whileHover={{ y: -10, scale: 1.02, borderColor: 'var(--primary)' }}
-              className="group relative bg-white border border-[var(--border)] p-8 overflow-hidden rounded-sm transition-all duration-300"
+              className="group relative bg-white border border-[var(--border)] p-5 md:p-8 overflow-hidden rounded-[1.25rem] md:rounded-sm transition-all duration-300"
             >
               {/* Hover Diagonal Overlay */}
               <div
@@ -43,10 +43,10 @@ export default function Industries() {
                 style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 0)' }}
               />
 
-              <div className="relative z-10 mb-6 text-[var(--accent)] group-hover:text-[var(--primary)] transition-all transform group-hover:scale-110 duration-300">
-                <ind.icon size={48} strokeWidth={1} />
+              <div className="relative z-10 mb-4 md:mb-6 text-[var(--accent)] group-hover:text-[var(--primary)] transition-all transform group-hover:scale-110 duration-300">
+                <ind.icon size={40} strokeWidth={1.2} />
               </div>
-              <h3 className="relative z-10 font-rajdhani text-2xl font-bold uppercase tracking-wider mb-2 text-[var(--accent)]">
+              <h3 className="relative z-10 font-poppins md:font-rajdhani text-lg md:text-2xl font-semibold md:font-bold uppercase tracking-[0.08em] md:tracking-wider mb-2 text-[var(--accent)]">
                 {ind.name}
               </h3>
               <p className="relative z-10 font-inter text-sm text-[var(--gray)]">

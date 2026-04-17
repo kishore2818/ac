@@ -39,15 +39,15 @@ export default function MapContainer() {
           color: '#ffffff',
           fontFamily: "var(--font-rajdhani, 'Rajdhani', sans-serif)",
           fontWeight: 700,
-          fontSize: '0.9rem',
+          fontSize: '0.8rem',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          padding: '12px 28px',
+          padding: '12px 20px',
           textDecoration: 'none',
           boxShadow: '0 8px 24px rgba(200, 16, 46, 0.3)',
           zIndex: 10,
           whiteSpace: 'nowrap',
-          borderRadius: '2px',
+          borderRadius: '18px',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
         onMouseEnter={e => {
@@ -79,5 +79,4 @@ export default function MapContainer() {
     </div>
   )
 }
-
 

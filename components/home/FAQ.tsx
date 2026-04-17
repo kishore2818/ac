@@ -16,6 +16,7 @@ const faqs = [
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const displayedFaqs = faqs.slice(0, 4)
 
   return (
     <motion.section 
@@ -27,28 +28,28 @@ export default function FAQ() {
         backgroundColor: "#fcfdfe" 
       }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-[var(--gray-bg)] py-16 lg:py-24 h-full flex flex-col justify-center relative overflow-hidden group transition-colors"
+      className="bg-[var(--gray-bg)] py-12 lg:py-24 h-full flex flex-col justify-center relative overflow-hidden group transition-colors"
     >
-      <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 relative z-10 transition-transform duration-500 group-hover:scale-[1.01]">
+      <div className="site-container max-w-2xl relative z-10 transition-transform duration-500 group-hover:scale-[1.01]">
         
-        <div className="text-center flex flex-col items-center mb-16">
+        <div className="text-left md:text-center flex flex-col items-start md:items-center mb-8 md:mb-16">
           <SectionLabel text="Got Questions?" color="accent" />
-          <h2 className="font-bebas text-5xl md:text-6xl text-[var(--accent)] tracking-wider">
+          <h2 className="font-cormorant md:font-bebas text-4xl md:text-6xl text-[var(--accent)] tracking-wider">
             FREQUENTLY ASKED <span className="text-[var(--primary)]">QUESTIONS</span>
           </h2>
         </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, i) => {
+        <div className="space-y-3 md:space-y-4">
+          {displayedFaqs.map((faq, i) => {
             const isOpen = openIndex === i
             return (
-              <div key={i} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div key={i} className="bg-white border border-[var(--border)] rounded-[1.25rem] md:rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-gray-50 transition-colors"
+                  className="w-full px-4 md:px-6 py-4 md:py-5 flex justify-between items-center text-left hover:bg-gray-50 transition-colors gap-3"
                 >
-                  <span className={`font-rajdhani text-lg md:text-xl font-bold tracking-widest uppercase transition-colors ${isOpen ? 'text-[var(--primary)]' : 'text-[var(--black)]'}`}>
+                  <span className={`font-poppins md:font-rajdhani text-sm md:text-xl font-semibold md:font-bold tracking-[0.08em] md:tracking-widest uppercase transition-colors ${isOpen ? 'text-[var(--primary)]' : 'text-[var(--black)]'}`}>
                     {faq.q}
                   </span>
                   <motion.div
@@ -67,7 +68,7 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                     >
-                      <div className="px-6 pb-6 pt-2 font-inter text-[var(--gray)] leading-relaxed">
+                      <div className="px-4 md:px-6 pb-5 md:pb-6 pt-1 md:pt-2 font-inter text-sm md:text-base text-[var(--gray)] leading-relaxed">
                         {faq.a}
                       </div>
                     </motion.div>
