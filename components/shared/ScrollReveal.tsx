@@ -36,8 +36,8 @@ export default function ScrollReveal({
   const variantWithDelay: Variants = {
     ...animation,
     visible: {
-      ...animation.visible,
-      transition: { ...animation.visible.transition, delay },
+      ...(animation.visible as any),
+      transition: { ...(animation.visible as any)?.transition, delay },
     },
   }
 
