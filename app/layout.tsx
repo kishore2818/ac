@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Outfit, Montserrat } from 'next/font/google'
 import './globals.css'
 import JsonLd from '@/components/shared/JsonLd'
+import TopLoader from '@/components/shared/TopLoader'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -122,6 +123,7 @@ export default function RootLayout({
         <meta name="ICBM" content="12.9716, 77.5946" />
       </head>
       <body className={`min-h-full bg-white text-black antialiased overflow-x-hidden ${inter.variable} ${outfit.variable} ${montserrat.variable}`}>
+        <TopLoader />
         <JsonLd />
         {children}
       </body>

@@ -11,7 +11,6 @@ export const clients = [
   { name: 'Thyssenkrupp Aerospace', industry: 'Aerospace Engineering', domain: 'thyssenkrupp-aerospace.com', logo: '/images/clients/thyssenkrupp.png' },
   { name: 'Inovit Solutions Pvt Ltd', industry: 'Technology Systems', domain: 'inovitsolutions.com', logo: '/images/clients/inovit.png' },
   { name: 'Menzis Aviation Bengaluru Pvt Ltd', industry: 'Aviation Logistics', domain: 'menziesaviation.com', logo: '/images/clients/menzies.png' },
-  { name: 'Silent Shores Resort & Spa', industry: 'Hospitality', domain: 'silentshoresresort.com', logo: '/images/clients/silentshores.png' },
   { name: 'Vaishnavi Sapphire Mall', industry: 'Retail Commercial', domain: 'vaishnavigroup.com', logo: '/images/clients/vaishnavi.png' },
   { name: 'Indus Altum Trust', industry: 'Education Institutional', domain: 'industrust.in', logo: '/images/clients/indusaltum.png' },
   { name: 'BK Joshi', industry: 'Residential Luxury', domain: 'bkjoshi.com', logo: '/images/clients/bkjoshi.png' }
