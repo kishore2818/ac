@@ -35,10 +35,11 @@ export default function Testimonials() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        if (!process.env.NEXT_PUBLIC_API_URL) return;
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews`)
-        if (!res.ok) return;
-        const data = await res.json()
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL
+        if (!apiUrl) return
+        const res = await fetch(`${apiUrl}/api/reviews`).catch(() => null)
+        if (!res || !res.ok) return
+        const data = await res.json().catch(() => null)
         if (Array.isArray(data) && data.length > 0) {
           setTestimonials(data.map((r: any) => ({
             quote: r.quote || r.comment,
@@ -48,8 +49,8 @@ export default function Testimonials() {
             image: r.image || '/images/hero/panel-1.jpg'
           })))
         }
-      } catch (error) {
-        console.error('Error fetching reviews:', error)
+      } catch {
+        // Fallback to staticTestimonials already initialized
       }
     }
     fetchReviews()

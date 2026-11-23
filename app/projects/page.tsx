@@ -29,9 +29,13 @@ export default function ProjectsPage() {
           return
         }
 
-        const res = await fetch(`${apiUrl}/api/projects`, { cache: 'no-store' })
-        if (!res.ok) throw new Error('Failed to fetch from API')
-        const apiData = await res.json()
+        const res = await fetch(`${apiUrl}/api/projects`, { cache: 'no-store' }).catch(() => null)
+        if (!res || !res.ok) {
+          setProjectsList(staticProjects)
+          setLoading(false)
+          return
+        }
+        const apiData = await res.json().catch(() => null)
         
         if (Array.isArray(apiData) && apiData.length > 0) {
           // API returned data — use it directly (DB is the source of truth)
@@ -62,8 +66,7 @@ export default function ProjectsPage() {
           // API returned empty — fall back to static data
           setProjectsList(staticProjects)
         }
-      } catch (error) {
-        console.error('Error fetching projects, falling back to static data:', error)
+      } catch {
         setProjectsList(staticProjects)
       } finally {
         setLoading(false)

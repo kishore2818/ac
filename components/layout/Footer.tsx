@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { Download, FileText } from 'lucide-react'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -38,16 +39,28 @@ export default function Footer() {
               Consult with Adler for turnkey engineering, 33 kV substations, panel integration, and CEIG statutory approvals tailored to your site.
             </p>
           </div>
-          <a
-            href="https://maps.google.com/?q=Azam+Nagar+Circle+Belagavi+Karnataka"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full md:w-auto"
-          >
-            <button className="w-full md:w-auto bg-white text-[var(--primary-dark)] font-inter font-bold tracking-wider uppercase px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors text-xs shadow-md">
-              Find Our Office →
-            </button>
-          </a>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+            <a
+              href="/adler-contracts-profile.pdf"
+              download="Adler-Contracts-Company-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto bg-[#111827] text-white hover:bg-black font-inter font-bold tracking-wider uppercase px-5 py-3 rounded-xl transition-all text-xs shadow-md inline-flex items-center justify-center gap-2 border border-white/20"
+            >
+              <Download className="w-4 h-4 text-[var(--primary)]" />
+              <span>Download Profile (PDF)</span>
+            </a>
+            <a
+              href="https://maps.google.com/?q=Azam+Nagar+Circle+Belagavi+Karnataka"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <button className="w-full sm:w-auto bg-white text-[var(--primary-dark)] font-inter font-bold tracking-wider uppercase px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors text-xs shadow-md">
+                Find Our Office →
+              </button>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -64,9 +77,23 @@ export default function Footer() {
             </div>
           </Link>
 
-          <p className="font-inter text-xs text-gray-400 mb-6 leading-relaxed">
+          <p className="font-inter text-xs text-gray-400 mb-4 leading-relaxed">
             Class I electrical contractor · HT/LT works up to 33 kV · Licence No. 1CL202315BGM · Belagavi, Karnataka
           </p>
+
+          {/* Mobile Download PDF Button */}
+          <div className="mb-5">
+            <a
+              href="/adler-contracts-profile.pdf"
+              download="Adler-Contracts-Company-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[var(--primary)] text-white font-inter text-xs font-bold uppercase tracking-wider shadow-md hover:bg-[var(--primary-dark)] transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download Company Profile (PDF)</span>
+            </a>
+          </div>
 
           <div className="space-y-3">
             {/* Quick Links */}
@@ -85,6 +112,16 @@ export default function Footer() {
                       {link.label}
                     </Link>
                   ))}
+                  <a
+                    href="/adler-contracts-profile.pdf"
+                    download="Adler-Contracts-Company-Profile.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-inter text-xs text-[var(--primary)] font-semibold flex items-center gap-1.5 pt-1"
+                  >
+                    <Download className="w-3.5 h-3.5 shrink-0" />
+                    <span>Download Profile (PDF)</span>
+                  </a>
                 </div>
               )}
             </div>
@@ -143,6 +180,20 @@ export default function Footer() {
             <p>Licence Validity: <span className="text-white">Up to 33 kV (31/01/2031)</span></p>
             <p>GSTIN: <span className="text-white font-mono">29CIZPP4477R1ZK</span></p>
           </div>
+
+          <div className="mt-5">
+            <a
+              href="/adler-contracts-profile.pdf"
+              download="Adler-Contracts-Company-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-[var(--primary)] text-white border border-white/15 hover:border-[var(--primary)] transition-all text-xs font-inter font-semibold shadow-sm group"
+            >
+              <FileText className="w-3.5 h-3.5 text-[var(--primary)] group-hover:text-white transition-colors" />
+              <span>Company Profile (PDF)</span>
+              <Download className="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors ml-0.5" />
+            </a>
+          </div>
         </div>
 
         {/* Quick Links */}
@@ -154,6 +205,16 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="/adler-contracts-profile.pdf"
+              download="Adler-Contracts-Company-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-inter text-xs text-[var(--primary)] hover:text-white transition-colors font-medium flex items-center gap-1.5 pt-1"
+            >
+              <Download className="w-3.5 h-3.5 shrink-0" />
+              <span>Download Profile (PDF)</span>
+            </a>
           </div>
         </div>
 
@@ -185,7 +246,17 @@ export default function Footer() {
         <div className="site-container py-5 flex flex-col md:flex-row items-center justify-between gap-3 font-inter text-xs text-gray-400 text-center md:text-left">
           <p>© {year} Adler Contracts. All rights reserved.</p>
           <p>Class I Electrical Contractor · HT/LT Works up to 33 kV · Licence No. 1CL202315BGM</p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/adler-contracts-profile.pdf"
+              download="Adler-Contracts-Company-Profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--primary)] hover:underline flex items-center gap-1"
+            >
+              <Download className="w-3 h-3" />
+              <span>Brochure (PDF)</span>
+            </a>
             <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
             <Link href="/projects" className="hover:text-white transition-colors">Projects</Link>
           </div>

@@ -19,9 +19,9 @@ export default function OngoingProjects() {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL
         if (!apiUrl) return
 
-        const res = await fetch(`${apiUrl}/api/projects`, { cache: 'no-store' })
-        if (!res.ok) return
-        const apiData = await res.json()
+        const res = await fetch(`${apiUrl}/api/projects`, { cache: 'no-store' }).catch(() => null)
+        if (!res || !res.ok) return
+        const apiData = await res.json().catch(() => null)
 
         if (Array.isArray(apiData) && apiData.length > 0) {
           // Map API projects
@@ -50,8 +50,8 @@ export default function OngoingProjects() {
           setTotalCount(mapped.length)
           setProjectsList(mapped.slice(0, 6))
         }
-      } catch (error) {
-        console.error('Error fetching projects for homepage:', error)
+      } catch {
+        // Fallback to staticProjects already initialized
       }
     }
     fetchProjects()
